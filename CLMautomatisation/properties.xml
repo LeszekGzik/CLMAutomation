@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>version 1.0</comment>
+	<entry key="screenfolder">.\..\Screenshots\</entry>
+	<entry key="testcases">.\..\Test cases\</entry>
+	<entry key="testdata">.\..\Test data\</entry>
+	<entry key="scenarios">.\..\Scenarios\</entry>
+	<entry key="geckodriver">.\..\Drivers\geckodriver.exe</entry>
+	<entry key="firefox">C:\Program Files (x86)\Mozilla Firefox\firefox.exe</entry>
+	<entry key="proxy"></entry>
+	<entry key="xlsoutput">.\..\testresults.xls</entry>
+	<entry key="xlssheet">Test Results</entry>
+	<entry key="reportinglevel">step</entry>
+	<entry key="screenshootinglevel">error</entry>
+	<entry key="logginglevel">debug</entry>
+	<entry key="maxrepetitions">1</entry>
+	<entry key="waitforinput">500</entry>
+</properties>
