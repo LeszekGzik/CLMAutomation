@@ -1,4 +1,4 @@
-package excel;
+package xml;
 
 import java.util.ArrayList;
 
@@ -7,37 +7,34 @@ import java.util.ArrayList;
  * Lista jest indeksowana wedle kolejnoœci dodawania elementów.
  * */
 public class TList {
-	ArrayList<String> testcases;
-	ArrayList<String> testdata; 
+	ArrayList<SingleTest> tests;
 	
 	/** dodaje parametr do listy */
-	public void add(String test, String data) {
-		testcases.add(test);
-		testdata.add(data);
+	public void add(SingleTest test) {
+		tests.add(test);
 	}
 	
 	/** Pobiera test o numerze index */
-	public String getTest(int index) {
-		return testcases.get(index);
+	public String getCase(int index) {
+		return tests.get(index).getCase();
 	}
 	
 	/** Pobiera krótk¹ nazwê testu (bez rozszerzenia) o numerze index */
-	public String getTestShortName(int index) {
-		return testcases.get(index).substring(0, testcases.get(index).lastIndexOf('.'));
+	public String getNameOf(int index) {
+		return tests.get(index).getName();
 	}
 	
 	/** Pobiera dane do testu o numerze index */
 	public String getData(int index) {
-		return testdata.get(index);
+		return tests.get(index).getData();
 	}
 	
 	public TList() {
-		testcases = new ArrayList<String>();
-		testdata = new ArrayList<String>();
+		tests = new ArrayList<SingleTest>();
 	}
 	
 	/** Zwraca iloœæ testów w liœcie */
 	public int size() {
-		return testcases.size();
+		return tests.size();
 	}
 }

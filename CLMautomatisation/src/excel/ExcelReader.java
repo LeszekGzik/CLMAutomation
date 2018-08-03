@@ -11,6 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 
 import excel.PList;
+import xml.TList;
 
 public class ExcelReader {
 	
@@ -111,7 +112,7 @@ public class ExcelReader {
 		return list;
 	}
 
-	/** Czyta listê testów (TList) z pierwszych dwóch kolumn pliku .xls (zak³adaj¹c, ¿e pierwsza kolumna to nazwy testów, a druga to dane testowe) */
+	/** Czyta listê testów (TList) z pierwszych dwóch kolumn pliku .xls (zak³adaj¹c, ¿e pierwsza kolumna to nazwy testów, a druga to dane testowe) 
 	public static TList readVertical(String filePath) {
 		TList tList = new TList();
 		HSSFWorkbook workbook;
@@ -148,5 +149,5 @@ public class ExcelReader {
 			System.out.println(e.getMessage());
 		}
 		return tList;
-	}
+	}*/
 }
