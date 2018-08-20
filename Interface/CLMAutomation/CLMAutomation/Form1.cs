@@ -14,10 +14,13 @@ namespace CLMAutomation
     public partial class Form1 : Form
     {
         Boolean changed, unnamed;
+        String propertiesComment;
 
         public Form1()
         {
             InitializeComponent();
+            loadProperties();
+            buttonUndoProperties.Enabled = false;
             saveFileDialog1.Filter = "XML Files|*.xml";
             changed = false;
             unnamed = true;
@@ -30,7 +33,7 @@ namespace CLMAutomation
             if (changesSaved) {
                 openFileDialog1.Filter = "XML Files|*.xml";
                 openFileDialog1.FileName = "";
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     loadScenario(openFileDialog1.FileName);
                     unnamed = false;
@@ -46,7 +49,7 @@ namespace CLMAutomation
             {
                 openFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
                 openFileDialog1.FileName = "";
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1[column, row].Value = openFileDialog1.FileName;
                     changed = true;
@@ -58,7 +61,7 @@ namespace CLMAutomation
         {
             openFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
             openFileDialog1.FileName = "";
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxOutputFile.Text = openFileDialog1.FileName;
                 changed = true;
@@ -166,13 +169,13 @@ namespace CLMAutomation
                 {
                     if (unnamed)
                     {
-                        if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             saveScenarioAs(saveFileDialog1.FileName);
                             unnamed = false;
                             changed = false;
                         }
-                        else if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+                        else if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                         {
                             ok = false;
                         }
@@ -193,7 +196,7 @@ namespace CLMAutomation
 
         private void buttonSelectScreenFolder_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxScreenFolder.Text = folderBrowserDialog1.SelectedPath;
                 changed = true;
@@ -204,7 +207,7 @@ namespace CLMAutomation
         {
             if (unnamed)
             {
-                if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     saveScenarioAs(saveFileDialog1.FileName);
                     changed = false;
@@ -220,7 +223,7 @@ namespace CLMAutomation
 
         private void buttonSaveAs_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 saveScenarioAs(saveFileDialog1.FileName);
                 textBoxFile.Text = saveFileDialog1.FileName;
@@ -239,6 +242,11 @@ namespace CLMAutomation
             changed = true;
         }
 
+        private void configChangesOccured(object sender, EventArgs e)
+        {
+            buttonUndoProperties.Enabled = true;
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Boolean close = askAboutSaving();
@@ -246,6 +254,16 @@ namespace CLMAutomation
             {
                 e.Cancel = true;
             }
+        }
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process runJar = new System.Diagnostics.Process();
+            runJar.StartInfo.UseShellExecute = false;
+            runJar.StartInfo.FileName = "java";
+            runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
+            runJar.StartInfo.Arguments = "-jar CLMautomation.jar " + textBoxFile.Text;
+            runJar.Start();
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -271,6 +289,124 @@ namespace CLMAutomation
                 dataGridView1.Columns.Add(columnTestData);
                 unnamed = true;
                 changed = false;
+            }
+        }
+
+        private void checkBoxProxy_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxProxy.Enabled = checkBoxProxy.Checked;
+            buttonUndoProperties.Enabled = true;
+        }
+
+        private void buttonFirefoxPath_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Executable Files|*.exe";
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxFirefoxPath.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void buttonGeckoPath_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Executable Files|*.exe";
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxGeckoPath.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void buttonUndoProperties_Click(object sender, EventArgs e)
+        {
+            loadProperties();
+            buttonUndoProperties.Enabled = false;
+        }
+
+        private void buttonSaveProperties_Click(object sender, EventArgs e)
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlNode docNode = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            doc.AppendChild(docNode);
+
+
+            XmlDocumentType docType = doc.CreateDocumentType("properties", null, "http://java.sun.com/dtd/properties.dtd", null);
+            doc.AppendChild(docType);
+
+            XmlNode propertiesNode = doc.CreateElement("properties");
+            doc.AppendChild(propertiesNode);
+
+            XmlElement property = doc.CreateElement("comment");
+            property.InnerText = propertiesComment;
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
+            property.SetAttribute("key", "firefox");
+            property.InnerText = textBoxFirefoxPath.Text;
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
+            property.SetAttribute("key", "geckodriver");
+            property.InnerText = textBoxGeckoPath.Text;
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
+            property.SetAttribute("key", "proxy");
+            if (checkBoxProxy.Checked)
+            {
+                property.InnerText = "true";
+            }
+            else
+            {
+                property.InnerText = "false";
+            }
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
+            property.SetAttribute("key", "proxyURL");
+            property.InnerText = textBoxProxy.Text;
+            propertiesNode.AppendChild(property);
+
+            doc.Save(Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation\\properties.xml");
+            buttonUndoProperties.Enabled = false;
+        }
+
+        public void loadProperties()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation\\properties.xml");
+            propertiesComment = doc.SelectSingleNode("//comment/text()").Value;
+            foreach(XmlNode entry in doc.SelectNodes("//entry"))
+            {
+                switch(entry.Attributes["key"].Value)
+                {
+                    case "firefox":
+                        textBoxFirefoxPath.Text = entry.SelectSingleNode("./text()").Value;
+                        break;
+                    case "geckodriver":
+                        textBoxGeckoPath.Text = entry.SelectSingleNode("./text()").Value;
+                        break;
+                    case "proxyURL":
+                        if (entry.SelectSingleNode("./text()") != null) {
+                            textBoxProxy.Text = entry.SelectSingleNode("./text()").Value;
+                        }
+                        else
+                        {
+                            textBoxProxy.Text = "";
+                        }
+                        break;
+                    case "proxy":
+                        if (entry.SelectSingleNode("./text()").Value == "true")
+                        {
+                            checkBoxProxy.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxProxy.Checked = false;
+                        }
+                        break;
+                }
             }
         }
     }

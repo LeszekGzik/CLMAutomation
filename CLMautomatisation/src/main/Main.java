@@ -29,18 +29,14 @@ public class Main {
 		TestObject.globalInit();
 		
 		if (args.length==1) {
-			//try {
-				XMLReadWriter xml = new XMLReadWriter(args[0]);
-				TestScenario scenario = xml.read(properties);
-				scenario.setInputWait();
-				scenario.loadTests();
-				scenario.executeAllTests();
-				ok = scenario.getNumberOfOkTests();
-				failed = scenario.getNumberOfFailedTests();
-				untested = scenario.getNumberOfUntestedTests();
-			//} catch(Exception e) {
-			//	System.out.println(e);
-			//}
+			XMLReadWriter xml = new XMLReadWriter(args[0]);
+			TestScenario scenario = xml.read(properties);
+			scenario.setInputWait();
+			scenario.loadTests();
+			scenario.executeAllTests();
+			ok = scenario.getNumberOfOkTests();
+			failed = scenario.getNumberOfFailedTests();
+			untested = scenario.getNumberOfUntestedTests();
 			Integer[][] contents = {{ok, failed, untested}};
 			ExcelWriter.appendWithInt(properties.getProperty("xlsoutput"), contents);
 		}

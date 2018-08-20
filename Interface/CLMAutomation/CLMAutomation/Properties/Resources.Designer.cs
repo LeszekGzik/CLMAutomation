@@ -63,6 +63,16 @@ namespace CLMAutomation.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Folder_16x {
+            get {
+                object obj = ResourceManager.GetObject("Folder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NewFile_16x {
             get {
                 object obj = ResourceManager.GetObject("NewFile_16x", resourceCulture);

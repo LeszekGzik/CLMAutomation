@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.buttonRun = new System.Windows.Forms.Button();
-            this.buttonSaveAs = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
+            this.tabPageTests = new System.Windows.Forms.TabPage();
             this.buttonSelectScreenFolder = new System.Windows.Forms.Button();
             this.labelScreenshootingLevel = new System.Windows.Forms.Label();
             this.comboBoxScreenshootingLevel = new System.Windows.Forms.ComboBox();
@@ -58,108 +54,85 @@
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.buttonSelectFile = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnTestCase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnTestData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageConfig = new System.Windows.Forms.TabPage();
+            this.tabPageResult = new System.Windows.Forms.TabPage();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.labelFirefoxPath = new System.Windows.Forms.Label();
+            this.textBoxFirefoxPath = new System.Windows.Forms.TextBox();
+            this.buttonRun = new System.Windows.Forms.Button();
+            this.buttonSaveAs = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
+            this.buttonFirefoxPath = new System.Windows.Forms.Button();
+            this.buttonGeckoPath = new System.Windows.Forms.Button();
+            this.labelGeckoPath = new System.Windows.Forms.Label();
+            this.textBoxGeckoPath = new System.Windows.Forms.TextBox();
+            this.checkBoxProxy = new System.Windows.Forms.CheckBox();
+            this.textBoxProxy = new System.Windows.Forms.TextBox();
+            this.labelProxy = new System.Windows.Forms.Label();
+            this.buttonSaveProperties = new System.Windows.Forms.Button();
+            this.buttonUndoProperties = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPageTests.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxRepetitions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPageConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPageTests);
+            this.tabControl1.Controls.Add(this.tabPageConfig);
+            this.tabControl1.Controls.Add(this.tabPageResult);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(590, 677);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageTests
             // 
-            this.tabPage1.Controls.Add(this.buttonRun);
-            this.tabPage1.Controls.Add(this.buttonSaveAs);
-            this.tabPage1.Controls.Add(this.buttonSave);
-            this.tabPage1.Controls.Add(this.buttonNew);
-            this.tabPage1.Controls.Add(this.buttonSelectScreenFolder);
-            this.tabPage1.Controls.Add(this.labelScreenshootingLevel);
-            this.tabPage1.Controls.Add(this.comboBoxScreenshootingLevel);
-            this.tabPage1.Controls.Add(this.labelReportingLevel);
-            this.tabPage1.Controls.Add(this.comboBoxReportingLevel);
-            this.tabPage1.Controls.Add(this.labelLoggingLevel);
-            this.tabPage1.Controls.Add(this.comboBoxLoggingLevel);
-            this.tabPage1.Controls.Add(this.labelDelay);
-            this.tabPage1.Controls.Add(this.numericUpDownDelay);
-            this.tabPage1.Controls.Add(this.labelMaxRepetitions);
-            this.tabPage1.Controls.Add(this.numericUpDownMaxRepetitions);
-            this.tabPage1.Controls.Add(this.labelReportTitle);
-            this.tabPage1.Controls.Add(this.textBoxReportTitle);
-            this.tabPage1.Controls.Add(this.buttonSelectOutputFile);
-            this.tabPage1.Controls.Add(this.labelReportFile);
-            this.tabPage1.Controls.Add(this.textBoxOutputFile);
-            this.tabPage1.Controls.Add(this.labelScenarioName);
-            this.tabPage1.Controls.Add(this.textBoxScreenFolder);
-            this.tabPage1.Controls.Add(this.labelScreenFolder);
-            this.tabPage1.Controls.Add(this.textBoxScenarioName);
-            this.tabPage1.Controls.Add(this.labelCurrentScenario);
-            this.tabPage1.Controls.Add(this.textBoxFile);
-            this.tabPage1.Controls.Add(this.buttonSelectFile);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(582, 651);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Tests";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // buttonRun
-            // 
-            this.buttonRun.Image = global::CLMAutomation.Properties.Resources.Run_16x;
-            this.buttonRun.Location = new System.Drawing.Point(103, 6);
-            this.buttonRun.Name = "buttonRun";
-            this.buttonRun.Size = new System.Drawing.Size(24, 24);
-            this.buttonRun.TabIndex = 23;
-            this.buttonRun.UseVisualStyleBackColor = true;
-            // 
-            // buttonSaveAs
-            // 
-            this.buttonSaveAs.Image = global::CLMAutomation.Properties.Resources.SaveAs_16x;
-            this.buttonSaveAs.Location = new System.Drawing.Point(66, 6);
-            this.buttonSaveAs.Name = "buttonSaveAs";
-            this.buttonSaveAs.Size = new System.Drawing.Size(24, 24);
-            this.buttonSaveAs.TabIndex = 23;
-            this.buttonSaveAs.UseVisualStyleBackColor = true;
-            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Image = global::CLMAutomation.Properties.Resources.Save_16x;
-            this.buttonSave.Location = new System.Drawing.Point(36, 6);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(24, 24);
-            this.buttonSave.TabIndex = 23;
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonNew
-            // 
-            this.buttonNew.Image = global::CLMAutomation.Properties.Resources.NewFile_16x;
-            this.buttonNew.Location = new System.Drawing.Point(6, 6);
-            this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(24, 24);
-            this.buttonNew.TabIndex = 22;
-            this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            this.tabPageTests.Controls.Add(this.buttonRun);
+            this.tabPageTests.Controls.Add(this.buttonSaveAs);
+            this.tabPageTests.Controls.Add(this.buttonSave);
+            this.tabPageTests.Controls.Add(this.buttonNew);
+            this.tabPageTests.Controls.Add(this.buttonSelectScreenFolder);
+            this.tabPageTests.Controls.Add(this.labelScreenshootingLevel);
+            this.tabPageTests.Controls.Add(this.comboBoxScreenshootingLevel);
+            this.tabPageTests.Controls.Add(this.labelReportingLevel);
+            this.tabPageTests.Controls.Add(this.comboBoxReportingLevel);
+            this.tabPageTests.Controls.Add(this.labelLoggingLevel);
+            this.tabPageTests.Controls.Add(this.comboBoxLoggingLevel);
+            this.tabPageTests.Controls.Add(this.labelDelay);
+            this.tabPageTests.Controls.Add(this.numericUpDownDelay);
+            this.tabPageTests.Controls.Add(this.labelMaxRepetitions);
+            this.tabPageTests.Controls.Add(this.numericUpDownMaxRepetitions);
+            this.tabPageTests.Controls.Add(this.labelReportTitle);
+            this.tabPageTests.Controls.Add(this.textBoxReportTitle);
+            this.tabPageTests.Controls.Add(this.buttonSelectOutputFile);
+            this.tabPageTests.Controls.Add(this.labelReportFile);
+            this.tabPageTests.Controls.Add(this.textBoxOutputFile);
+            this.tabPageTests.Controls.Add(this.labelScenarioName);
+            this.tabPageTests.Controls.Add(this.textBoxScreenFolder);
+            this.tabPageTests.Controls.Add(this.labelScreenFolder);
+            this.tabPageTests.Controls.Add(this.textBoxScenarioName);
+            this.tabPageTests.Controls.Add(this.labelCurrentScenario);
+            this.tabPageTests.Controls.Add(this.textBoxFile);
+            this.tabPageTests.Controls.Add(this.buttonSelectFile);
+            this.tabPageTests.Controls.Add(this.dataGridView1);
+            this.tabPageTests.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTests.Name = "tabPageTests";
+            this.tabPageTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTests.Size = new System.Drawing.Size(582, 651);
+            this.tabPageTests.TabIndex = 0;
+            this.tabPageTests.Text = "Tests";
+            this.tabPageTests.UseVisualStyleBackColor = true;
             // 
             // buttonSelectScreenFolder
             // 
@@ -433,29 +406,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.changesOccured);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(582, 651);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Config";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(582, 651);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Result";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // columnName
             // 
             this.columnName.HeaderText = "name";
@@ -471,6 +421,190 @@
             this.columnTestData.HeaderText = "testdata";
             this.columnTestData.Name = "columnTestData";
             // 
+            // tabPageConfig
+            // 
+            this.tabPageConfig.Controls.Add(this.buttonUndoProperties);
+            this.tabPageConfig.Controls.Add(this.buttonSaveProperties);
+            this.tabPageConfig.Controls.Add(this.checkBoxProxy);
+            this.tabPageConfig.Controls.Add(this.buttonGeckoPath);
+            this.tabPageConfig.Controls.Add(this.labelProxy);
+            this.tabPageConfig.Controls.Add(this.textBoxProxy);
+            this.tabPageConfig.Controls.Add(this.labelGeckoPath);
+            this.tabPageConfig.Controls.Add(this.textBoxGeckoPath);
+            this.tabPageConfig.Controls.Add(this.buttonFirefoxPath);
+            this.tabPageConfig.Controls.Add(this.labelFirefoxPath);
+            this.tabPageConfig.Controls.Add(this.textBoxFirefoxPath);
+            this.tabPageConfig.Location = new System.Drawing.Point(4, 22);
+            this.tabPageConfig.Name = "tabPageConfig";
+            this.tabPageConfig.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageConfig.Size = new System.Drawing.Size(582, 651);
+            this.tabPageConfig.TabIndex = 1;
+            this.tabPageConfig.Text = "Config";
+            this.tabPageConfig.UseVisualStyleBackColor = true;
+            // 
+            // tabPageResult
+            // 
+            this.tabPageResult.Location = new System.Drawing.Point(4, 22);
+            this.tabPageResult.Name = "tabPageResult";
+            this.tabPageResult.Size = new System.Drawing.Size(582, 651);
+            this.tabPageResult.TabIndex = 2;
+            this.tabPageResult.Text = "Result";
+            this.tabPageResult.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // labelFirefoxPath
+            // 
+            this.labelFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.labelFirefoxPath.AutoSize = true;
+            this.labelFirefoxPath.Location = new System.Drawing.Point(6, 21);
+            this.labelFirefoxPath.Name = "labelFirefoxPath";
+            this.labelFirefoxPath.Size = new System.Drawing.Size(117, 13);
+            this.labelFirefoxPath.TabIndex = 12;
+            this.labelFirefoxPath.Text = "Firefox executable path";
+            // 
+            // textBoxFirefoxPath
+            // 
+            this.textBoxFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.textBoxFirefoxPath.Location = new System.Drawing.Point(9, 37);
+            this.textBoxFirefoxPath.Name = "textBoxFirefoxPath";
+            this.textBoxFirefoxPath.Size = new System.Drawing.Size(462, 20);
+            this.textBoxFirefoxPath.TabIndex = 11;
+            this.textBoxFirefoxPath.TextChanged += new System.EventHandler(this.configChangesOccured);
+            // 
+            // buttonRun
+            // 
+            this.buttonRun.Image = global::CLMAutomation.Properties.Resources.Run_16x;
+            this.buttonRun.Location = new System.Drawing.Point(103, 6);
+            this.buttonRun.Name = "buttonRun";
+            this.buttonRun.Size = new System.Drawing.Size(24, 24);
+            this.buttonRun.TabIndex = 23;
+            this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
+            // 
+            // buttonSaveAs
+            // 
+            this.buttonSaveAs.Image = global::CLMAutomation.Properties.Resources.SaveAs_16x;
+            this.buttonSaveAs.Location = new System.Drawing.Point(66, 6);
+            this.buttonSaveAs.Name = "buttonSaveAs";
+            this.buttonSaveAs.Size = new System.Drawing.Size(24, 24);
+            this.buttonSaveAs.TabIndex = 23;
+            this.buttonSaveAs.UseVisualStyleBackColor = true;
+            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Image = global::CLMAutomation.Properties.Resources.Save_16x;
+            this.buttonSave.Location = new System.Drawing.Point(36, 6);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(24, 24);
+            this.buttonSave.TabIndex = 23;
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.Image = global::CLMAutomation.Properties.Resources.NewFile_16x;
+            this.buttonNew.Location = new System.Drawing.Point(6, 6);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(24, 24);
+            this.buttonNew.TabIndex = 22;
+            this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
+            // buttonFirefoxPath
+            // 
+            this.buttonFirefoxPath.Image = global::CLMAutomation.Properties.Resources.Folder_16x;
+            this.buttonFirefoxPath.Location = new System.Drawing.Point(477, 35);
+            this.buttonFirefoxPath.Name = "buttonFirefoxPath";
+            this.buttonFirefoxPath.Size = new System.Drawing.Size(24, 24);
+            this.buttonFirefoxPath.TabIndex = 13;
+            this.buttonFirefoxPath.UseVisualStyleBackColor = true;
+            this.buttonFirefoxPath.Click += new System.EventHandler(this.buttonFirefoxPath_Click);
+            // 
+            // buttonGeckoPath
+            // 
+            this.buttonGeckoPath.Image = global::CLMAutomation.Properties.Resources.Folder_16x;
+            this.buttonGeckoPath.Location = new System.Drawing.Point(477, 87);
+            this.buttonGeckoPath.Name = "buttonGeckoPath";
+            this.buttonGeckoPath.Size = new System.Drawing.Size(24, 24);
+            this.buttonGeckoPath.TabIndex = 16;
+            this.buttonGeckoPath.UseVisualStyleBackColor = true;
+            this.buttonGeckoPath.Click += new System.EventHandler(this.buttonGeckoPath_Click);
+            // 
+            // labelGeckoPath
+            // 
+            this.labelGeckoPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.labelGeckoPath.AutoSize = true;
+            this.labelGeckoPath.Location = new System.Drawing.Point(6, 73);
+            this.labelGeckoPath.Name = "labelGeckoPath";
+            this.labelGeckoPath.Size = new System.Drawing.Size(89, 13);
+            this.labelGeckoPath.TabIndex = 15;
+            this.labelGeckoPath.Text = "Geckodriver path";
+            // 
+            // textBoxGeckoPath
+            // 
+            this.textBoxGeckoPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.textBoxGeckoPath.Location = new System.Drawing.Point(9, 89);
+            this.textBoxGeckoPath.Name = "textBoxGeckoPath";
+            this.textBoxGeckoPath.Size = new System.Drawing.Size(462, 20);
+            this.textBoxGeckoPath.TabIndex = 14;
+            this.textBoxGeckoPath.TextChanged += new System.EventHandler(this.configChangesOccured);
+            // 
+            // checkBoxProxy
+            // 
+            this.checkBoxProxy.AutoSize = true;
+            this.checkBoxProxy.Location = new System.Drawing.Point(9, 132);
+            this.checkBoxProxy.Name = "checkBoxProxy";
+            this.checkBoxProxy.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxProxy.TabIndex = 20;
+            this.checkBoxProxy.Text = "Use proxy";
+            this.checkBoxProxy.UseVisualStyleBackColor = true;
+            this.checkBoxProxy.CheckedChanged += new System.EventHandler(this.checkBoxProxy_CheckedChanged);
+            // 
+            // textBoxProxy
+            // 
+            this.textBoxProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.textBoxProxy.Enabled = false;
+            this.textBoxProxy.Location = new System.Drawing.Point(9, 180);
+            this.textBoxProxy.Name = "textBoxProxy";
+            this.textBoxProxy.Size = new System.Drawing.Size(462, 20);
+            this.textBoxProxy.TabIndex = 14;
+            this.textBoxProxy.TextChanged += new System.EventHandler(this.configChangesOccured);
+            // 
+            // labelProxy
+            // 
+            this.labelProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.labelProxy.AutoSize = true;
+            this.labelProxy.Location = new System.Drawing.Point(6, 164);
+            this.labelProxy.Name = "labelProxy";
+            this.labelProxy.Size = new System.Drawing.Size(58, 13);
+            this.labelProxy.TabIndex = 15;
+            this.labelProxy.Text = "Proxy URL";
+            // 
+            // buttonSaveProperties
+            // 
+            this.buttonSaveProperties.Location = new System.Drawing.Point(9, 220);
+            this.buttonSaveProperties.Name = "buttonSaveProperties";
+            this.buttonSaveProperties.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveProperties.TabIndex = 21;
+            this.buttonSaveProperties.Text = "Save";
+            this.buttonSaveProperties.UseVisualStyleBackColor = true;
+            this.buttonSaveProperties.Click += new System.EventHandler(this.buttonSaveProperties_Click);
+            // 
+            // buttonUndoProperties
+            // 
+            this.buttonUndoProperties.Enabled = false;
+            this.buttonUndoProperties.Location = new System.Drawing.Point(426, 220);
+            this.buttonUndoProperties.Name = "buttonUndoProperties";
+            this.buttonUndoProperties.Size = new System.Drawing.Size(75, 23);
+            this.buttonUndoProperties.TabIndex = 22;
+            this.buttonUndoProperties.Text = "Undo";
+            this.buttonUndoProperties.UseVisualStyleBackColor = true;
+            this.buttonUndoProperties.Click += new System.EventHandler(this.buttonUndoProperties_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,11 +615,13 @@
             this.Text = "CLMAutomation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabPageTests.ResumeLayout(false);
+            this.tabPageTests.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxRepetitions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPageConfig.ResumeLayout(false);
+            this.tabPageConfig.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -493,9 +629,9 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageTests;
+        private System.Windows.Forms.TabPage tabPageConfig;
+        private System.Windows.Forms.TabPage tabPageResult;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Button buttonSelectFile;
@@ -530,6 +666,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTestCase;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTestData;
+        private System.Windows.Forms.Button buttonFirefoxPath;
+        private System.Windows.Forms.Label labelFirefoxPath;
+        private System.Windows.Forms.TextBox textBoxFirefoxPath;
+        private System.Windows.Forms.Button buttonGeckoPath;
+        private System.Windows.Forms.Label labelGeckoPath;
+        private System.Windows.Forms.TextBox textBoxGeckoPath;
+        private System.Windows.Forms.CheckBox checkBoxProxy;
+        private System.Windows.Forms.Label labelProxy;
+        private System.Windows.Forms.TextBox textBoxProxy;
+        private System.Windows.Forms.Button buttonUndoProperties;
+        private System.Windows.Forms.Button buttonSaveProperties;
     }
 }
 

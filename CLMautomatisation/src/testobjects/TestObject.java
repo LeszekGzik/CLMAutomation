@@ -118,18 +118,19 @@ public class TestObject {
 		continueTest = true;
 		maxRepetitions = Integer.parseInt(properties.getProperty("maxrepetitions"));
 		String px = properties.getProperty("proxy");
+		String url = properties.getProperty("proxyURL");
 		DesiredCapabilities cap = new DesiredCapabilities(); 
 		org.openqa.selenium.Proxy proxy = new Proxy();
 		
 		//ustawienie proxy
-		if (px.equals("")) {		 
-			proxy.setProxyType(Proxy.ProxyType.DIRECT);
+		if (px.equals("true")) {	
+			proxy.setProxyType(Proxy.ProxyType.MANUAL);
+			proxy.setHttpProxy(url);
+			proxy.setSslProxy(url);
 			cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			cap.setCapability(CapabilityType.PROXY, proxy);
 		} else {
-			proxy.setProxyType(Proxy.ProxyType.MANUAL);
-			proxy.setHttpProxy(px);
-			proxy.setSslProxy(px);
+			proxy.setProxyType(Proxy.ProxyType.DIRECT);
 			cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			cap.setCapability(CapabilityType.PROXY, proxy);
 		}
