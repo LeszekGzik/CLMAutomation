@@ -259,6 +259,8 @@ namespace CLMAutomation
         private void buttonRun_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process runJar = new System.Diagnostics.Process();
+            runJar.Exited += new EventHandler(exited);
+            runJar.EnableRaisingEvents = true;
             runJar.StartInfo.UseShellExecute = false;
             runJar.StartInfo.FileName = "java";
             runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
@@ -408,6 +410,11 @@ namespace CLMAutomation
                         break;
                 }
             }
+        }
+
+        private void exited(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test completed", "Message");
         }
     }
 }
