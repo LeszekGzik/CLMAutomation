@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace CLMAutomation
     {
         Boolean changed, unnamed;
         String propertiesComment;
+        Stopwatch watch;
 
         public Form1()
         {
@@ -156,6 +158,7 @@ namespace CLMAutomation
             }
 
             doc.Save(fileName);
+            textBoxFile.Text = fileName;
         }
 
         //jeśli formatka jest niezapisana, pyta i/lub zapisuje; zwraca false jeśli użytkownik anulował, lub true w przeciwnym wypadku
@@ -258,7 +261,8 @@ namespace CLMAutomation
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process runJar = new System.Diagnostics.Process();
+            askAboutSaving();
+            Process runJar = new Process();
             runJar.Exited += new EventHandler(exited);
             runJar.EnableRaisingEvents = true;
             runJar.StartInfo.UseShellExecute = false;
@@ -266,6 +270,7 @@ namespace CLMAutomation
             runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
             runJar.StartInfo.Arguments = "-jar CLMautomation.jar " + textBoxFile.Text;
             runJar.Start();
+            watch = Stopwatch.StartNew();
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -354,6 +359,30 @@ namespace CLMAutomation
             propertiesNode.AppendChild(property);
 
             property = doc.CreateElement("entry");
+            property.SetAttribute("key", "openexcel");
+            if (checkBoxOpenExcel.Checked)
+            {
+                property.InnerText = "true";
+            }
+            else
+            {
+                property.InnerText = "false";
+            }
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
+            property.SetAttribute("key", "messagebox");
+            if (checkBoxOpenMessage.Checked)
+            {
+                property.InnerText = "true";
+            }
+            else
+            {
+                property.InnerText = "false";
+            }
+            propertiesNode.AppendChild(property);
+
+            property = doc.CreateElement("entry");
             property.SetAttribute("key", "proxy");
             if (checkBoxProxy.Checked)
             {
@@ -408,13 +437,45 @@ namespace CLMAutomation
                             checkBoxProxy.Checked = false;
                         }
                         break;
+                    case "openexcel":
+                        if (entry.SelectSingleNode("./text()").Value == "true")
+                        {
+                            checkBoxOpenExcel.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxOpenExcel.Checked = false;
+                        }
+                        break;
+                    case "messagebox":
+                        if (entry.SelectSingleNode("./text()").Value == "true")
+                        {
+                            checkBoxOpenMessage.Checked = true;
+                        }
+                        else
+                        {
+                            checkBoxOpenMessage.Checked = false;
+                        }
+                        break;
                 }
             }
         }
 
         private void exited(object sender, EventArgs e)
         {
-            MessageBox.Show("Test completed", "Message");
+            watch.Stop();
+            double elapsed = (double)watch.ElapsedMilliseconds/1000;
+            if (checkBoxOpenMessage.Checked)
+            {
+                MessageBox.Show("Scenario completed in " + elapsed + " seconds.", "Testing finished");
+            }
+            if (checkBoxOpenExcel.Checked)
+            {
+                Process runExcel = new Process();
+                runExcel.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
+                runExcel.StartInfo.FileName = textBoxOutputFile.Text;
+                runExcel.Start();
+            }
         }
     }
 }

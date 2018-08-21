@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTests = new System.Windows.Forms.TabPage();
+            this.buttonRun = new System.Windows.Forms.Button();
+            this.buttonSaveAs = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
             this.buttonSelectScreenFolder = new System.Windows.Forms.Button();
             this.labelScreenshootingLevel = new System.Windows.Forms.Label();
             this.comboBoxScreenshootingLevel = new System.Windows.Forms.ComboBox();
@@ -58,25 +63,24 @@
             this.columnTestCase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnTestData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageConfig = new System.Windows.Forms.TabPage();
+            this.buttonUndoProperties = new System.Windows.Forms.Button();
+            this.buttonSaveProperties = new System.Windows.Forms.Button();
+            this.checkBoxProxy = new System.Windows.Forms.CheckBox();
+            this.buttonGeckoPath = new System.Windows.Forms.Button();
+            this.labelProxy = new System.Windows.Forms.Label();
+            this.textBoxProxy = new System.Windows.Forms.TextBox();
+            this.labelGeckoPath = new System.Windows.Forms.Label();
+            this.textBoxGeckoPath = new System.Windows.Forms.TextBox();
+            this.buttonFirefoxPath = new System.Windows.Forms.Button();
+            this.labelFirefoxPath = new System.Windows.Forms.Label();
+            this.textBoxFirefoxPath = new System.Windows.Forms.TextBox();
             this.tabPageResult = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.labelFirefoxPath = new System.Windows.Forms.Label();
-            this.textBoxFirefoxPath = new System.Windows.Forms.TextBox();
-            this.buttonRun = new System.Windows.Forms.Button();
-            this.buttonSaveAs = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
-            this.buttonFirefoxPath = new System.Windows.Forms.Button();
-            this.buttonGeckoPath = new System.Windows.Forms.Button();
-            this.labelGeckoPath = new System.Windows.Forms.Label();
-            this.textBoxGeckoPath = new System.Windows.Forms.TextBox();
-            this.checkBoxProxy = new System.Windows.Forms.CheckBox();
-            this.textBoxProxy = new System.Windows.Forms.TextBox();
-            this.labelProxy = new System.Windows.Forms.Label();
-            this.buttonSaveProperties = new System.Windows.Forms.Button();
-            this.buttonUndoProperties = new System.Windows.Forms.Button();
+            this.checkBoxOpenMessage = new System.Windows.Forms.CheckBox();
+            this.checkBoxOpenExcel = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPageTests.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
@@ -134,6 +138,50 @@
             this.tabPageTests.Text = "Tests";
             this.tabPageTests.UseVisualStyleBackColor = true;
             // 
+            // buttonRun
+            // 
+            this.buttonRun.Image = global::CLMAutomation.Properties.Resources.Run_16x;
+            this.buttonRun.Location = new System.Drawing.Point(103, 6);
+            this.buttonRun.Name = "buttonRun";
+            this.buttonRun.Size = new System.Drawing.Size(24, 24);
+            this.buttonRun.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.buttonRun, "Run scenario");
+            this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
+            // 
+            // buttonSaveAs
+            // 
+            this.buttonSaveAs.Image = global::CLMAutomation.Properties.Resources.SaveAs_16x;
+            this.buttonSaveAs.Location = new System.Drawing.Point(66, 6);
+            this.buttonSaveAs.Name = "buttonSaveAs";
+            this.buttonSaveAs.Size = new System.Drawing.Size(24, 24);
+            this.buttonSaveAs.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.buttonSaveAs, "Save As...");
+            this.buttonSaveAs.UseVisualStyleBackColor = true;
+            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Image = global::CLMAutomation.Properties.Resources.Save_16x;
+            this.buttonSave.Location = new System.Drawing.Point(36, 6);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(24, 24);
+            this.buttonSave.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.buttonSave, "Save");
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.Image = global::CLMAutomation.Properties.Resources.NewFile_16x;
+            this.buttonNew.Location = new System.Drawing.Point(6, 6);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(24, 24);
+            this.buttonNew.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.buttonNew, "New");
+            this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
             // buttonSelectScreenFolder
             // 
             this.buttonSelectScreenFolder.Location = new System.Drawing.Point(474, 404);
@@ -170,6 +218,8 @@
             this.comboBoxScreenshootingLevel.Name = "comboBoxScreenshootingLevel";
             this.comboBoxScreenshootingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxScreenshootingLevel.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.comboBoxScreenshootingLevel, "How often the app will take screenshots (can also be taken manually in the test c" +
+        "ase script).");
             this.comboBoxScreenshootingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelReportingLevel
@@ -198,6 +248,7 @@
             this.comboBoxReportingLevel.Name = "comboBoxReportingLevel";
             this.comboBoxReportingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxReportingLevel.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.comboBoxReportingLevel, "How often the app will write into the report file.");
             this.comboBoxReportingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelLoggingLevel
@@ -227,6 +278,7 @@
             this.comboBoxLoggingLevel.Name = "comboBoxLoggingLevel";
             this.comboBoxLoggingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxLoggingLevel.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.comboBoxLoggingLevel, "How often the app will log its activities.");
             this.comboBoxLoggingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelDelay
@@ -254,6 +306,7 @@
             this.numericUpDownDelay.Name = "numericUpDownDelay";
             this.numericUpDownDelay.Size = new System.Drawing.Size(103, 20);
             this.numericUpDownDelay.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.numericUpDownDelay, "How much time (in miliseconds) should the app wait between executing commands.");
             this.numericUpDownDelay.ValueChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelMaxRepetitions
@@ -276,6 +329,7 @@
             this.numericUpDownMaxRepetitions.Name = "numericUpDownMaxRepetitions";
             this.numericUpDownMaxRepetitions.Size = new System.Drawing.Size(103, 20);
             this.numericUpDownMaxRepetitions.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.numericUpDownMaxRepetitions, "How many times the current command should be repeated in case of an error.");
             this.numericUpDownMaxRepetitions.Value = new decimal(new int[] {
             1,
             0,
@@ -299,6 +353,7 @@
             this.textBoxReportTitle.Name = "textBoxReportTitle";
             this.textBoxReportTitle.Size = new System.Drawing.Size(140, 20);
             this.textBoxReportTitle.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.textBoxReportTitle, "The title that will appear on the sheet in report file.");
             this.textBoxReportTitle.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // buttonSelectOutputFile
@@ -320,6 +375,7 @@
             this.labelReportFile.Size = new System.Drawing.Size(55, 13);
             this.labelReportFile.TabIndex = 9;
             this.labelReportFile.Text = "Report file";
+            this.toolTip1.SetToolTip(this.labelReportFile, "An .xls file into which the final report will be saved.");
             // 
             // textBoxOutputFile
             // 
@@ -328,6 +384,7 @@
             this.textBoxOutputFile.Name = "textBoxOutputFile";
             this.textBoxOutputFile.Size = new System.Drawing.Size(462, 20);
             this.textBoxOutputFile.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.textBoxOutputFile, "An .xls file into which the final report will be saved.");
             this.textBoxOutputFile.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelScenarioName
@@ -338,6 +395,7 @@
             this.labelScenarioName.Size = new System.Drawing.Size(78, 13);
             this.labelScenarioName.TabIndex = 7;
             this.labelScenarioName.Text = "Scenario name";
+            this.toolTip1.SetToolTip(this.labelScenarioName, "Scenario name that will be displayed in report files");
             // 
             // textBoxScreenFolder
             // 
@@ -345,6 +403,7 @@
             this.textBoxScreenFolder.Name = "textBoxScreenFolder";
             this.textBoxScreenFolder.Size = new System.Drawing.Size(462, 20);
             this.textBoxScreenFolder.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBoxScreenFolder, "Folder which will contain all screenshots taken during execution");
             this.textBoxScreenFolder.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelScreenFolder
@@ -355,6 +414,7 @@
             this.labelScreenFolder.Size = new System.Drawing.Size(90, 13);
             this.labelScreenFolder.TabIndex = 7;
             this.labelScreenFolder.Text = "Screenshot folder";
+            this.toolTip1.SetToolTip(this.labelScreenFolder, "Folder which will contain all screenshots taken during execution");
             // 
             // textBoxScenarioName
             // 
@@ -362,6 +422,7 @@
             this.textBoxScenarioName.Name = "textBoxScenarioName";
             this.textBoxScenarioName.Size = new System.Drawing.Size(462, 20);
             this.textBoxScenarioName.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBoxScenarioName, "Scenario name that will be displayed in report files");
             this.textBoxScenarioName.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelCurrentScenario
@@ -423,6 +484,8 @@
             // 
             // tabPageConfig
             // 
+            this.tabPageConfig.Controls.Add(this.checkBoxOpenExcel);
+            this.tabPageConfig.Controls.Add(this.checkBoxOpenMessage);
             this.tabPageConfig.Controls.Add(this.buttonUndoProperties);
             this.tabPageConfig.Controls.Add(this.buttonSaveProperties);
             this.tabPageConfig.Controls.Add(this.checkBoxProxy);
@@ -442,87 +505,37 @@
             this.tabPageConfig.Text = "Config";
             this.tabPageConfig.UseVisualStyleBackColor = true;
             // 
-            // tabPageResult
+            // buttonUndoProperties
             // 
-            this.tabPageResult.Location = new System.Drawing.Point(4, 22);
-            this.tabPageResult.Name = "tabPageResult";
-            this.tabPageResult.Size = new System.Drawing.Size(582, 651);
-            this.tabPageResult.TabIndex = 2;
-            this.tabPageResult.Text = "Result";
-            this.tabPageResult.UseVisualStyleBackColor = true;
+            this.buttonUndoProperties.Enabled = false;
+            this.buttonUndoProperties.Location = new System.Drawing.Point(426, 330);
+            this.buttonUndoProperties.Name = "buttonUndoProperties";
+            this.buttonUndoProperties.Size = new System.Drawing.Size(75, 23);
+            this.buttonUndoProperties.TabIndex = 22;
+            this.buttonUndoProperties.Text = "Undo";
+            this.buttonUndoProperties.UseVisualStyleBackColor = true;
+            this.buttonUndoProperties.Click += new System.EventHandler(this.buttonUndoProperties_Click);
             // 
-            // openFileDialog1
+            // buttonSaveProperties
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.buttonSaveProperties.Location = new System.Drawing.Point(9, 330);
+            this.buttonSaveProperties.Name = "buttonSaveProperties";
+            this.buttonSaveProperties.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveProperties.TabIndex = 21;
+            this.buttonSaveProperties.Text = "Save";
+            this.buttonSaveProperties.UseVisualStyleBackColor = true;
+            this.buttonSaveProperties.Click += new System.EventHandler(this.buttonSaveProperties_Click);
             // 
-            // labelFirefoxPath
+            // checkBoxProxy
             // 
-            this.labelFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.labelFirefoxPath.AutoSize = true;
-            this.labelFirefoxPath.Location = new System.Drawing.Point(6, 21);
-            this.labelFirefoxPath.Name = "labelFirefoxPath";
-            this.labelFirefoxPath.Size = new System.Drawing.Size(117, 13);
-            this.labelFirefoxPath.TabIndex = 12;
-            this.labelFirefoxPath.Text = "Firefox executable path";
-            // 
-            // textBoxFirefoxPath
-            // 
-            this.textBoxFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.textBoxFirefoxPath.Location = new System.Drawing.Point(9, 37);
-            this.textBoxFirefoxPath.Name = "textBoxFirefoxPath";
-            this.textBoxFirefoxPath.Size = new System.Drawing.Size(462, 20);
-            this.textBoxFirefoxPath.TabIndex = 11;
-            this.textBoxFirefoxPath.TextChanged += new System.EventHandler(this.configChangesOccured);
-            // 
-            // buttonRun
-            // 
-            this.buttonRun.Image = global::CLMAutomation.Properties.Resources.Run_16x;
-            this.buttonRun.Location = new System.Drawing.Point(103, 6);
-            this.buttonRun.Name = "buttonRun";
-            this.buttonRun.Size = new System.Drawing.Size(24, 24);
-            this.buttonRun.TabIndex = 23;
-            this.buttonRun.UseVisualStyleBackColor = true;
-            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
-            // 
-            // buttonSaveAs
-            // 
-            this.buttonSaveAs.Image = global::CLMAutomation.Properties.Resources.SaveAs_16x;
-            this.buttonSaveAs.Location = new System.Drawing.Point(66, 6);
-            this.buttonSaveAs.Name = "buttonSaveAs";
-            this.buttonSaveAs.Size = new System.Drawing.Size(24, 24);
-            this.buttonSaveAs.TabIndex = 23;
-            this.buttonSaveAs.UseVisualStyleBackColor = true;
-            this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Image = global::CLMAutomation.Properties.Resources.Save_16x;
-            this.buttonSave.Location = new System.Drawing.Point(36, 6);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(24, 24);
-            this.buttonSave.TabIndex = 23;
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonNew
-            // 
-            this.buttonNew.Image = global::CLMAutomation.Properties.Resources.NewFile_16x;
-            this.buttonNew.Location = new System.Drawing.Point(6, 6);
-            this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(24, 24);
-            this.buttonNew.TabIndex = 22;
-            this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
-            // 
-            // buttonFirefoxPath
-            // 
-            this.buttonFirefoxPath.Image = global::CLMAutomation.Properties.Resources.Folder_16x;
-            this.buttonFirefoxPath.Location = new System.Drawing.Point(477, 35);
-            this.buttonFirefoxPath.Name = "buttonFirefoxPath";
-            this.buttonFirefoxPath.Size = new System.Drawing.Size(24, 24);
-            this.buttonFirefoxPath.TabIndex = 13;
-            this.buttonFirefoxPath.UseVisualStyleBackColor = true;
-            this.buttonFirefoxPath.Click += new System.EventHandler(this.buttonFirefoxPath_Click);
+            this.checkBoxProxy.AutoSize = true;
+            this.checkBoxProxy.Location = new System.Drawing.Point(9, 132);
+            this.checkBoxProxy.Name = "checkBoxProxy";
+            this.checkBoxProxy.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxProxy.TabIndex = 20;
+            this.checkBoxProxy.Text = "Use proxy";
+            this.checkBoxProxy.UseVisualStyleBackColor = true;
+            this.checkBoxProxy.CheckedChanged += new System.EventHandler(this.checkBoxProxy_CheckedChanged);
             // 
             // buttonGeckoPath
             // 
@@ -533,6 +546,26 @@
             this.buttonGeckoPath.TabIndex = 16;
             this.buttonGeckoPath.UseVisualStyleBackColor = true;
             this.buttonGeckoPath.Click += new System.EventHandler(this.buttonGeckoPath_Click);
+            // 
+            // labelProxy
+            // 
+            this.labelProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.labelProxy.AutoSize = true;
+            this.labelProxy.Location = new System.Drawing.Point(6, 164);
+            this.labelProxy.Name = "labelProxy";
+            this.labelProxy.Size = new System.Drawing.Size(58, 13);
+            this.labelProxy.TabIndex = 15;
+            this.labelProxy.Text = "Proxy URL";
+            // 
+            // textBoxProxy
+            // 
+            this.textBoxProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.textBoxProxy.Enabled = false;
+            this.textBoxProxy.Location = new System.Drawing.Point(9, 180);
+            this.textBoxProxy.Name = "textBoxProxy";
+            this.textBoxProxy.Size = new System.Drawing.Size(462, 20);
+            this.textBoxProxy.TabIndex = 14;
+            this.textBoxProxy.TextChanged += new System.EventHandler(this.configChangesOccured);
             // 
             // labelGeckoPath
             // 
@@ -553,57 +586,69 @@
             this.textBoxGeckoPath.TabIndex = 14;
             this.textBoxGeckoPath.TextChanged += new System.EventHandler(this.configChangesOccured);
             // 
-            // checkBoxProxy
+            // buttonFirefoxPath
             // 
-            this.checkBoxProxy.AutoSize = true;
-            this.checkBoxProxy.Location = new System.Drawing.Point(9, 132);
-            this.checkBoxProxy.Name = "checkBoxProxy";
-            this.checkBoxProxy.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxProxy.TabIndex = 20;
-            this.checkBoxProxy.Text = "Use proxy";
-            this.checkBoxProxy.UseVisualStyleBackColor = true;
-            this.checkBoxProxy.CheckedChanged += new System.EventHandler(this.checkBoxProxy_CheckedChanged);
+            this.buttonFirefoxPath.Image = global::CLMAutomation.Properties.Resources.Folder_16x;
+            this.buttonFirefoxPath.Location = new System.Drawing.Point(477, 35);
+            this.buttonFirefoxPath.Name = "buttonFirefoxPath";
+            this.buttonFirefoxPath.Size = new System.Drawing.Size(24, 24);
+            this.buttonFirefoxPath.TabIndex = 13;
+            this.buttonFirefoxPath.UseVisualStyleBackColor = true;
+            this.buttonFirefoxPath.Click += new System.EventHandler(this.buttonFirefoxPath_Click);
             // 
-            // textBoxProxy
+            // labelFirefoxPath
             // 
-            this.textBoxProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.textBoxProxy.Enabled = false;
-            this.textBoxProxy.Location = new System.Drawing.Point(9, 180);
-            this.textBoxProxy.Name = "textBoxProxy";
-            this.textBoxProxy.Size = new System.Drawing.Size(462, 20);
-            this.textBoxProxy.TabIndex = 14;
-            this.textBoxProxy.TextChanged += new System.EventHandler(this.configChangesOccured);
+            this.labelFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.labelFirefoxPath.AutoSize = true;
+            this.labelFirefoxPath.Location = new System.Drawing.Point(6, 21);
+            this.labelFirefoxPath.Name = "labelFirefoxPath";
+            this.labelFirefoxPath.Size = new System.Drawing.Size(117, 13);
+            this.labelFirefoxPath.TabIndex = 12;
+            this.labelFirefoxPath.Text = "Firefox executable path";
             // 
-            // labelProxy
+            // textBoxFirefoxPath
             // 
-            this.labelProxy.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.labelProxy.AutoSize = true;
-            this.labelProxy.Location = new System.Drawing.Point(6, 164);
-            this.labelProxy.Name = "labelProxy";
-            this.labelProxy.Size = new System.Drawing.Size(58, 13);
-            this.labelProxy.TabIndex = 15;
-            this.labelProxy.Text = "Proxy URL";
+            this.textBoxFirefoxPath.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.textBoxFirefoxPath.Location = new System.Drawing.Point(9, 37);
+            this.textBoxFirefoxPath.Name = "textBoxFirefoxPath";
+            this.textBoxFirefoxPath.Size = new System.Drawing.Size(462, 20);
+            this.textBoxFirefoxPath.TabIndex = 11;
+            this.textBoxFirefoxPath.TextChanged += new System.EventHandler(this.configChangesOccured);
             // 
-            // buttonSaveProperties
+            // tabPageResult
             // 
-            this.buttonSaveProperties.Location = new System.Drawing.Point(9, 220);
-            this.buttonSaveProperties.Name = "buttonSaveProperties";
-            this.buttonSaveProperties.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveProperties.TabIndex = 21;
-            this.buttonSaveProperties.Text = "Save";
-            this.buttonSaveProperties.UseVisualStyleBackColor = true;
-            this.buttonSaveProperties.Click += new System.EventHandler(this.buttonSaveProperties_Click);
+            this.tabPageResult.Location = new System.Drawing.Point(4, 22);
+            this.tabPageResult.Name = "tabPageResult";
+            this.tabPageResult.Size = new System.Drawing.Size(582, 651);
+            this.tabPageResult.TabIndex = 2;
+            this.tabPageResult.Text = "Result";
+            this.tabPageResult.UseVisualStyleBackColor = true;
             // 
-            // buttonUndoProperties
+            // openFileDialog1
             // 
-            this.buttonUndoProperties.Enabled = false;
-            this.buttonUndoProperties.Location = new System.Drawing.Point(426, 220);
-            this.buttonUndoProperties.Name = "buttonUndoProperties";
-            this.buttonUndoProperties.Size = new System.Drawing.Size(75, 23);
-            this.buttonUndoProperties.TabIndex = 22;
-            this.buttonUndoProperties.Text = "Undo";
-            this.buttonUndoProperties.UseVisualStyleBackColor = true;
-            this.buttonUndoProperties.Click += new System.EventHandler(this.buttonUndoProperties_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // checkBoxOpenMessage
+            // 
+            this.checkBoxOpenMessage.AutoSize = true;
+            this.checkBoxOpenMessage.Location = new System.Drawing.Point(9, 232);
+            this.checkBoxOpenMessage.Name = "checkBoxOpenMessage";
+            this.checkBoxOpenMessage.Size = new System.Drawing.Size(235, 17);
+            this.checkBoxOpenMessage.TabIndex = 23;
+            this.checkBoxOpenMessage.Text = "Show me a message when test is completed";
+            this.checkBoxOpenMessage.UseVisualStyleBackColor = true;
+            this.checkBoxOpenMessage.CheckedChanged += new System.EventHandler(this.configChangesOccured);
+            // 
+            // checkBoxOpenExcel
+            // 
+            this.checkBoxOpenExcel.AutoSize = true;
+            this.checkBoxOpenExcel.Location = new System.Drawing.Point(9, 268);
+            this.checkBoxOpenExcel.Name = "checkBoxOpenExcel";
+            this.checkBoxOpenExcel.Size = new System.Drawing.Size(249, 17);
+            this.checkBoxOpenExcel.TabIndex = 24;
+            this.checkBoxOpenExcel.Text = "Open report file in Excel when test is completed";
+            this.checkBoxOpenExcel.UseVisualStyleBackColor = true;
+            this.checkBoxOpenExcel.CheckedChanged += new System.EventHandler(this.configChangesOccured);
             // 
             // Form1
             // 
@@ -677,6 +722,9 @@
         private System.Windows.Forms.TextBox textBoxProxy;
         private System.Windows.Forms.Button buttonUndoProperties;
         private System.Windows.Forms.Button buttonSaveProperties;
+        private System.Windows.Forms.CheckBox checkBoxOpenExcel;
+        private System.Windows.Forms.CheckBox checkBoxOpenMessage;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

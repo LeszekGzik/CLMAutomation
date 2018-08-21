@@ -4,6 +4,8 @@
   <comment>version 1.1</comment>
   <entry key="firefox">C:\Program Files (x86)\Mozilla Firefox\firefox.exe</entry>
   <entry key="geckodriver">C:\Users\A0631675\Desktop\CLMAutomation\Drivers\geckodriver.exe</entry>
+  <entry key="openexcel">false</entry>
+  <entry key="messagebox">true</entry>
   <entry key="proxy">false</entry>
   <entry key="proxyURL">
   </entry>
