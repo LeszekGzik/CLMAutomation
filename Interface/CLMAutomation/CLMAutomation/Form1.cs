@@ -14,78 +14,58 @@ namespace CLMAutomation
 {
     public partial class Form1 : Form
     {
-        Boolean changed, unnamed;
-        String propertiesComment;
-        Stopwatch watch;
+        int nextNewTabNumber;
 
         public Form1()
         {
             InitializeComponent();
-            loadProperties();
-            buttonUndoProperties.Enabled = false;
             saveFileDialog1.Filter = "XML Files|*.xml";
-            changed = false;
-            unnamed = true;
-        }
-
-        private void buttonSelectFile_Click(object sender, EventArgs e)
-        {
-            Boolean changesSaved = askAboutSaving();
-
-            if (changesSaved) {
-                openFileDialog1.Filter = "XML Files|*.xml";
-                openFileDialog1.FileName = "";
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    loadScenario(openFileDialog1.FileName);
-                    unnamed = false;
-                }
-            }
+            UserControlScenario userControlScenario = new UserControlScenario("new 1");
+            tabControl1.TabPages[0].Controls.Add(userControlScenario);
+            nextNewTabNumber = 2;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (unnamed)
+            UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
+            if (userControlScenario.Unnamed)
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    saveScenarioAs(saveFileDialog1.FileName);
-                    changed = false;
-                    unnamed = false;
+                    String path = saveFileDialog1.FileName;
+                    userControlScenario.saveScenarioAs(path);
+                    userControlScenario.Changed = false;
+                    userControlScenario.Unnamed = false;
+                    tabControl1.SelectedTab.Text = userControlScenario.ShortName;
                 }
             }
             else
             {
-                saveScenarioAs(textBoxFile.Text);
-                changed = false;
+                userControlScenario.saveScenario();
+                userControlScenario.Changed = false;
             }
         }
 
         private void buttonSaveAs_Click(object sender, EventArgs e)
         {
+            UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                saveScenarioAs(saveFileDialog1.FileName);
-                textBoxFile.Text = saveFileDialog1.FileName;
-                changed = false;
-                unnamed = false;
+                String path = saveFileDialog1.FileName;
+                userControlScenario.saveScenarioAs(path);
+                userControlScenario.Changed = false;
+                userControlScenario.Unnamed = false;
+                tabControl1.SelectedTab.Text = path.Substring(path.LastIndexOf('\\') + 1);
             }
-        }
-
-        
-
-        private void configChangesOccured(object sender, EventArgs e)
-        {
-            buttonUndoProperties.Enabled = true;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Boolean close = askAboutSaving();
+            /*Boolean close = askAboutSaving();
             if (!close)
             {
                 e.Cancel = true;
-            }
+            }*/
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
@@ -95,167 +75,98 @@ namespace CLMAutomation
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            
+            TabPage newTab = new TabPage("new " + nextNewTabNumber);
+            newTab.BackColor = Color.White;
+            UserControlScenario userControlScenario = new UserControlScenario("new " + nextNewTabNumber);
+            newTab.Controls.Add(userControlScenario);
+            tabControl1.TabPages.Add(newTab);
+            int last = tabControl1.TabPages.Count - 1;
+            tabControl1.SelectTab(last);
+            nextNewTabNumber++;
         }
-
-        private void checkBoxProxy_CheckedChanged(object sender, EventArgs e)
+      
+        private void buttonOpen_Click(object sender, EventArgs e)
         {
-            textBoxProxy.Enabled = checkBoxProxy.Checked;
-            buttonUndoProperties.Enabled = true;
-        }
-
-        private void buttonFirefoxPath_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Filter = "Executable Files|*.exe";
+            openFileDialog1.Filter = "XML Files|*.xml";
             openFileDialog1.FileName = "";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBoxFirefoxPath.Text = openFileDialog1.FileName;
+                String path = openFileDialog1.FileName;
+                TabPage newTab = new TabPage(path.Substring(path.LastIndexOf('\\')+1));
+                newTab.BackColor = Color.White;
+                UserControlScenario userControlScenario = new UserControlScenario();
+                newTab.Controls.Add(userControlScenario);
+                tabControl1.TabPages.Add(newTab);
+                userControlScenario.loadScenario(path);
+                int last = tabControl1.TabPages.Count - 1;
+                tabControl1.SelectTab(last);
             }
         }
 
-        private void buttonGeckoPath_Click(object sender, EventArgs e)
+        private void buttonSaveAll_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Executable Files|*.exe";
-            openFileDialog1.FileName = "";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            foreach(TabPage tab in tabControl1.TabPages)
             {
-                textBoxGeckoPath.Text = openFileDialog1.FileName;
-            }
-        }
-
-        private void buttonUndoProperties_Click(object sender, EventArgs e)
-        {
-            loadProperties();
-            buttonUndoProperties.Enabled = false;
-        }
-
-        private void buttonSaveProperties_Click(object sender, EventArgs e)
-        {
-            XmlDocument doc = new XmlDocument();
-            XmlNode docNode = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            doc.AppendChild(docNode);
-
-
-            XmlDocumentType docType = doc.CreateDocumentType("properties", null, "http://java.sun.com/dtd/properties.dtd", null);
-            doc.AppendChild(docType);
-
-            XmlNode propertiesNode = doc.CreateElement("properties");
-            doc.AppendChild(propertiesNode);
-
-            XmlElement property = doc.CreateElement("comment");
-            property.InnerText = propertiesComment;
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "firefox");
-            property.InnerText = textBoxFirefoxPath.Text;
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "geckodriver");
-            property.InnerText = textBoxGeckoPath.Text;
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "openexcel");
-            if (checkBoxOpenExcel.Checked)
-            {
-                property.InnerText = "true";
-            }
-            else
-            {
-                property.InnerText = "false";
-            }
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "messagebox");
-            if (checkBoxOpenMessage.Checked)
-            {
-                property.InnerText = "true";
-            }
-            else
-            {
-                property.InnerText = "false";
-            }
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "proxy");
-            if (checkBoxProxy.Checked)
-            {
-                property.InnerText = "true";
-            }
-            else
-            {
-                property.InnerText = "false";
-            }
-            propertiesNode.AppendChild(property);
-
-            property = doc.CreateElement("entry");
-            property.SetAttribute("key", "proxyURL");
-            property.InnerText = textBoxProxy.Text;
-            propertiesNode.AppendChild(property);
-
-            doc.Save(Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation\\properties.xml");
-            buttonUndoProperties.Enabled = false;
-        }
-
-        public void loadProperties()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation\\properties.xml");
-            propertiesComment = doc.SelectSingleNode("//comment/text()").Value;
-            foreach(XmlNode entry in doc.SelectNodes("//entry"))
-            {
-                switch(entry.Attributes["key"].Value)
+                UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
+                if (userControlScenario.Changed)
                 {
-                    case "firefox":
-                        textBoxFirefoxPath.Text = entry.SelectSingleNode("./text()").Value;
-                        break;
-                    case "geckodriver":
-                        textBoxGeckoPath.Text = entry.SelectSingleNode("./text()").Value;
-                        break;
-                    case "proxyURL":
-                        if (entry.SelectSingleNode("./text()") != null) {
-                            textBoxProxy.Text = entry.SelectSingleNode("./text()").Value;
-                        }
-                        else
+                    if (userControlScenario.Unnamed)
+                    {
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            textBoxProxy.Text = "";
+                            String path = saveFileDialog1.FileName;
+                            userControlScenario.saveScenarioAs(path);
+                            userControlScenario.Changed = false;
+                            userControlScenario.Unnamed = false;
+                            tab.Text = userControlScenario.ShortName;
                         }
-                        break;
-                    case "proxy":
-                        if (entry.SelectSingleNode("./text()").Value == "true")
-                        {
-                            checkBoxProxy.Checked = true;
-                        }
-                        else
-                        {
-                            checkBoxProxy.Checked = false;
-                        }
-                        break;
-                    case "openexcel":
-                        if (entry.SelectSingleNode("./text()").Value == "true")
-                        {
-                            checkBoxOpenExcel.Checked = true;
-                        }
-                        else
-                        {
-                            checkBoxOpenExcel.Checked = false;
-                        }
-                        break;
-                    case "messagebox":
-                        if (entry.SelectSingleNode("./text()").Value == "true")
-                        {
-                            checkBoxOpenMessage.Checked = true;
-                        }
-                        else
-                        {
-                            checkBoxOpenMessage.Checked = false;
-                        }
-                        break;
+                    }
+                    else
+                    {
+                        userControlScenario.saveScenario();
+                        userControlScenario.Changed = false;
+                    }
+                }
+            }
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
+            Boolean okToClose = userControlScenario.askAboutSaving(); //zapytanie użytkownika czy chce zapisać w przypadku gdy niezapisane
+            if (okToClose)
+            {
+                //jeśli istnieje więcej niż jedna zakładka, przełącz się na inną
+                if (tabControl1.TabPages.Count > 1)
+                {
+                    int index = tabControl1.SelectedIndex;
+                    if (index > 0)
+                    {
+                        tabControl1.SelectTab(index - 1);
+                    }
+                    else
+                    {
+                        tabControl1.SelectTab(index + 1);
+                    }
+                    tabControl1.TabPages.RemoveAt(index);
+                }
+                //jeśli istnieje tylko jedna zakładka, utwórz nową
+                else
+                {
+                    tabControl1.TabPages.RemoveAt(0);
+                    TabPage newTab = new TabPage("new 1");
+                    newTab.BackColor = Color.White;
+                    userControlScenario = new UserControlScenario("new 1");
+                    newTab.Controls.Add(userControlScenario);
+                    tabControl1.TabPages.Add(newTab);
+                    tabControl1.SelectTab(0);
+                    nextNewTabNumber = 2;
                 }
             }
         }

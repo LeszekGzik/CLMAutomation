@@ -16,10 +16,25 @@ namespace CLMAutomation
     {
         Boolean changed, unnamed;
         Stopwatch watch;
+        String shortName;
+
+        public bool Changed { get => changed; set => changed = value; }
+        public bool Unnamed { get => unnamed; set => unnamed = value; }
+        public string ShortName { get => shortName; set => shortName = value; }
 
         public UserControlScenario()
         {
             InitializeComponent();
+            Changed = false;
+            Unnamed = true;
+        }
+
+        public UserControlScenario(String name)
+        {
+            InitializeComponent();
+            ShortName = name;
+            Changed = false;
+            Unnamed = true;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,7 +48,7 @@ namespace CLMAutomation
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1[column, row].Value = openFileDialog1.FileName;
-                    changed = true;
+                    Changed = true;
                 }
             }
         }
@@ -45,7 +60,7 @@ namespace CLMAutomation
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxOutputFile.Text = openFileDialog1.FileName;
-                changed = true;
+                Changed = true;
             }
         }
 
@@ -54,18 +69,18 @@ namespace CLMAutomation
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxScreenFolder.Text = folderBrowserDialog1.SelectedPath;
-                changed = true;
+                Changed = true;
             }
         }
 
         private void changesOccured(object sender, EventArgs e)
         {
-            changed = true;
+            Changed = true;
         }
 
         private void changesOccured(object sender, DataGridViewCellEventArgs e)
         {
-            changed = true;
+            Changed = true;
         }
 
         public void saveScenarioAs(String fileName)
@@ -124,24 +139,30 @@ namespace CLMAutomation
 
             doc.Save(fileName);
             textBoxFile.Text = fileName;
+            ShortName = fileName.Substring(fileName.LastIndexOf('\\') + 1);
+        }
+
+        public void saveScenario()
+        {
+            saveScenarioAs(textBoxFile.Text);
         }
 
         //jeśli formatka jest niezapisana, pyta i/lub zapisuje; zwraca false jeśli użytkownik anulował, lub true w przeciwnym wypadku
         public Boolean askAboutSaving()
         {
             Boolean ok = true;
-            if (changed)
+            if (Changed)
             {
-                DialogResult dialogResult = MessageBox.Show("There are unsaved changes in the form. Do you want to save now?", "Warning", MessageBoxButtons.YesNoCancel);
+                DialogResult dialogResult = MessageBox.Show("There are unsaved changes in " + ShortName + ". Do you want to save now?", "Warning", MessageBoxButtons.YesNoCancel);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    if (unnamed)
+                    if (Unnamed)
                     {
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             saveScenarioAs(saveFileDialog1.FileName);
-                            unnamed = false;
-                            changed = false;
+                            Unnamed = false;
+                            Changed = false;
                         }
                         else if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                         {
@@ -151,7 +172,7 @@ namespace CLMAutomation
                     else
                     {
                         saveScenarioAs(textBoxFile.Text);
-                        changed = false;
+                        Changed = false;
                     }
                 }
                 else if (dialogResult == DialogResult.Cancel)
@@ -186,38 +207,13 @@ namespace CLMAutomation
                 comboBoxLoggingLevel.Text = doc.SelectSingleNode("//scenario/logginglevel/text()").Value;
                 comboBoxReportingLevel.Text = doc.SelectSingleNode("//scenario/reportinglevel/text()").Value;
                 comboBoxScreenshootingLevel.Text = doc.SelectSingleNode("//scenario/screenshootinglevel/text()").Value;
-                changed = false;
-                unnamed = false;
+                Changed = false;
+                Unnamed = false;
+                ShortName = fileName.Substring(fileName.LastIndexOf('\\') + 1);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        public void newScenario()
-        {
-            Boolean changesSaved = askAboutSaving();
-
-            if (changesSaved)
-            {
-                textBoxFile.Text = "";
-                textBoxOutputFile.Text = "";
-                textBoxReportTitle.Text = "";
-                textBoxScenarioName.Text = "";
-                textBoxScreenFolder.Text = "";
-                numericUpDownDelay.Value = 0;
-                numericUpDownMaxRepetitions.Value = 1;
-                comboBoxLoggingLevel.SelectedItem = null;
-                comboBoxReportingLevel.SelectedItem = null;
-                comboBoxScreenshootingLevel.SelectedItem = null;
-                dataGridView1.DataSource = null;
-                dataGridView1.Columns.Clear();
-                dataGridView1.Columns.Add(columnName);
-                dataGridView1.Columns.Add(columnTestCase);
-                dataGridView1.Columns.Add(columnTestData);
-                unnamed = true;
-                changed = false;
             }
         }
 
