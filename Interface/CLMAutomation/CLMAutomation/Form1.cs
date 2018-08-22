@@ -21,6 +21,7 @@ namespace CLMAutomation
             InitializeComponent();
             saveFileDialog1.Filter = "XML Files|*.xml";
             UserControlScenario userControlScenario = new UserControlScenario("new 1");
+            userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
             tabControl1.TabPages[0].Controls.Add(userControlScenario);
             nextNewTabNumber = 2;
         }
@@ -34,15 +35,13 @@ namespace CLMAutomation
                 {
                     String path = saveFileDialog1.FileName;
                     userControlScenario.saveScenarioAs(path);
-                    userControlScenario.Changed = false;
-                    userControlScenario.Unnamed = false;
                     tabControl1.SelectedTab.Text = userControlScenario.ShortName;
                 }
             }
             else
             {
                 userControlScenario.saveScenario();
-                userControlScenario.Changed = false;
+                tabControl1.SelectedTab.Text = userControlScenario.ShortName;
             }
         }
 
@@ -53,9 +52,7 @@ namespace CLMAutomation
             {
                 String path = saveFileDialog1.FileName;
                 userControlScenario.saveScenarioAs(path);
-                userControlScenario.Changed = false;
-                userControlScenario.Unnamed = false;
-                tabControl1.SelectedTab.Text = path.Substring(path.LastIndexOf('\\') + 1);
+                tabControl1.SelectedTab.Text = userControlScenario.ShortName;
             }
         }
 
@@ -78,6 +75,7 @@ namespace CLMAutomation
             TabPage newTab = new TabPage("new " + nextNewTabNumber);
             newTab.BackColor = Color.White;
             UserControlScenario userControlScenario = new UserControlScenario("new " + nextNewTabNumber);
+            userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
             newTab.Controls.Add(userControlScenario);
             tabControl1.TabPages.Add(newTab);
             int last = tabControl1.TabPages.Count - 1;
@@ -95,6 +93,7 @@ namespace CLMAutomation
                 TabPage newTab = new TabPage(path.Substring(path.LastIndexOf('\\')+1));
                 newTab.BackColor = Color.White;
                 UserControlScenario userControlScenario = new UserControlScenario();
+                userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
                 newTab.Controls.Add(userControlScenario);
                 tabControl1.TabPages.Add(newTab);
                 userControlScenario.loadScenario(path);
@@ -116,15 +115,13 @@ namespace CLMAutomation
                         {
                             String path = saveFileDialog1.FileName;
                             userControlScenario.saveScenarioAs(path);
-                            userControlScenario.Changed = false;
-                            userControlScenario.Unnamed = false;
                             tab.Text = userControlScenario.ShortName;
                         }
                     }
                     else
                     {
                         userControlScenario.saveScenario();
-                        userControlScenario.Changed = false;
+                        tab.Text = userControlScenario.ShortName;
                     }
                 }
             }
@@ -163,11 +160,74 @@ namespace CLMAutomation
                     TabPage newTab = new TabPage("new 1");
                     newTab.BackColor = Color.White;
                     userControlScenario = new UserControlScenario("new 1");
+                    userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
                     newTab.Controls.Add(userControlScenario);
                     tabControl1.TabPages.Add(newTab);
                     tabControl1.SelectTab(0);
                     nextNewTabNumber = 2;
                 }
+            }
+        }
+
+        public void ScenarioChangedEventHandler(object sender, EventArgs e)
+        {
+            UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
+            if (userControlScenario.Changed) {
+                tabControl1.SelectedTab.Text = userControlScenario.ShortName + "*";
+            }
+        }
+
+        private void buttonMoveLeft_Click(object sender, EventArgs e)
+        {
+            int index = tabControl1.SelectedIndex;
+            if (index>0)
+            {
+                TabPage tab = tabControl1.SelectedTab;
+                tabControl1.TabPages.Remove(tab);
+                tabControl1.TabPages.Insert(index - 1, tab);
+                tabControl1.SelectTab(tab);
+            }
+        }
+
+        private void buttonMoveRight_Click(object sender, EventArgs e)
+        {
+            int index = tabControl1.SelectedIndex;
+            if (index < (tabControl1.TabCount - 1))
+            {
+                TabPage tab = tabControl1.SelectedTab;
+                tabControl1.TabPages.Remove(tab);
+                tabControl1.TabPages.Insert(index + 1, tab);
+                tabControl1.SelectTab(tab);
+            }
+        }
+
+        private void buttonCloseAll_Click(object sender, EventArgs e)
+        {
+            foreach(TabPage tab in tabControl1.TabPages)
+            {
+                UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
+                Boolean okToClose = userControlScenario.askAboutSaving();
+                if(okToClose)
+                {
+                    tabControl1.TabPages.Remove(tab);
+                }
+            }
+            //jeśli zostały jakieś niezamknięte zakładki, przełącz się na pierwszą z lewej
+            if (tabControl1.TabCount>0)
+            {
+                tabControl1.SelectTab(0);
+            }
+            //jeśli nie, utwórz nową zakładkę
+            else
+            {
+                TabPage newTab = new TabPage("new 1");
+                newTab.BackColor = Color.White;
+                UserControlScenario userControlScenario = new UserControlScenario("new 1");
+                userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
+                newTab.Controls.Add(userControlScenario);
+                tabControl1.TabPages.Add(newTab);
+                tabControl1.SelectTab(0);
+                nextNewTabNumber = 2;
             }
         }
     }

@@ -22,6 +22,8 @@ namespace CLMAutomation
         public bool Unnamed { get => unnamed; set => unnamed = value; }
         public string ShortName { get => shortName; set => shortName = value; }
 
+        public event EventHandler ScenarioChanged;
+
         public UserControlScenario()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace CLMAutomation
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1[column, row].Value = openFileDialog1.FileName;
+                    if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
                     Changed = true;
                 }
             }
@@ -60,6 +63,7 @@ namespace CLMAutomation
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxOutputFile.Text = openFileDialog1.FileName;
+                if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
                 Changed = true;
             }
         }
@@ -69,17 +73,20 @@ namespace CLMAutomation
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxScreenFolder.Text = folderBrowserDialog1.SelectedPath;
+                if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
                 Changed = true;
             }
         }
 
         private void changesOccured(object sender, EventArgs e)
         {
+            if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
             Changed = true;
         }
 
         private void changesOccured(object sender, DataGridViewCellEventArgs e)
         {
+            if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
             Changed = true;
         }
 
@@ -139,6 +146,8 @@ namespace CLMAutomation
 
             doc.Save(fileName);
             textBoxFile.Text = fileName;
+            Changed = false;
+            Unnamed = false;
             ShortName = fileName.Substring(fileName.LastIndexOf('\\') + 1);
         }
 
