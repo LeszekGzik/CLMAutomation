@@ -33,8 +33,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPageTests = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.buttonMoveRight = new System.Windows.Forms.Button();
             this.buttonMoveLeft = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
@@ -47,31 +45,14 @@
             this.buttonSaveAs = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
+            this.tabPageTests = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "c";
-            // 
-            // tabPageTests
-            // 
-            this.tabPageTests.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTests.Name = "tabPageTests";
-            this.tabPageTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTests.Size = new System.Drawing.Size(582, 623);
-            this.tabPageTests.TabIndex = 0;
-            this.tabPageTests.Text = "new 1";
-            this.tabPageTests.UseVisualStyleBackColor = true;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPageTests);
-            this.tabControl1.Location = new System.Drawing.Point(13, 41);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(590, 649);
-            this.tabControl1.TabIndex = 0;
             // 
             // buttonMoveRight
             // 
@@ -137,6 +118,7 @@
             this.buttonRunAll.TabIndex = 58;
             this.toolTip1.SetToolTip(this.buttonRunAll, "Run all");
             this.buttonRunAll.UseVisualStyleBackColor = true;
+            this.buttonRunAll.Click += new System.EventHandler(this.buttonRunAll_Click);
             // 
             // buttonSaveAll
             // 
@@ -169,6 +151,7 @@
             this.buttonRun.TabIndex = 55;
             this.toolTip1.SetToolTip(this.buttonRun, "Run");
             this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
             // buttonSaveAs
             // 
@@ -202,6 +185,25 @@
             this.toolTip1.SetToolTip(this.buttonNew, "New");
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
+            // tabPageTests
+            // 
+            this.tabPageTests.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTests.Name = "tabPageTests";
+            this.tabPageTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTests.Size = new System.Drawing.Size(582, 623);
+            this.tabPageTests.TabIndex = 0;
+            this.tabPageTests.Text = "new 1";
+            this.tabPageTests.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPageTests);
+            this.tabControl1.Location = new System.Drawing.Point(13, 41);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(590, 649);
+            this.tabControl1.TabIndex = 0;
             // 
             // Form1
             // 

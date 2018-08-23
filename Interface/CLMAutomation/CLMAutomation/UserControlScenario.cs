@@ -228,16 +228,19 @@ namespace CLMAutomation
 
         public void run()
         {
-            askAboutSaving();
-            Process runJar = new Process();
-            runJar.Exited += new EventHandler(exited);
-            runJar.EnableRaisingEvents = true;
-            runJar.StartInfo.UseShellExecute = false;
-            runJar.StartInfo.FileName = "java";
-            runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
-            runJar.StartInfo.Arguments = "-jar CLMautomation.jar " + textBoxFile.Text;
-            runJar.Start();
-            watch = Stopwatch.StartNew();
+            Boolean ok = askAboutSaving();
+            if (ok)
+            {
+                Process runJar = new Process();
+                runJar.Exited += new EventHandler(exited);
+                runJar.EnableRaisingEvents = true;
+                runJar.StartInfo.UseShellExecute = false;
+                runJar.StartInfo.FileName = "java";
+                runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
+                runJar.StartInfo.Arguments = "-jar CLMautomation.jar " + textBoxFile.Text;
+                runJar.Start();
+                watch = Stopwatch.StartNew();
+            }
         }
 
         private void exited(object sender, EventArgs e)
@@ -256,6 +259,19 @@ namespace CLMAutomation
                 runExcel.Start();
             }*/
             MessageBox.Show("Scenario completed in " + elapsed + " seconds.", "Testing finished");
+        }
+
+        public Boolean isCorrect()
+        {
+            Boolean correct = true;
+            correct &= (textBoxScenarioName.Text.Length > 0);
+            correct &= (textBoxScreenFolder.Text.Length > 0);
+            correct &= (textBoxReportTitle.Text.Length > 0);
+            correct &= (textBoxOutputFile.Text.Length > 0);
+            correct &= (comboBoxLoggingLevel.SelectedItem != null);
+            correct &= (comboBoxReportingLevel.SelectedItem != null);
+            correct &= (comboBoxScreenshootingLevel.SelectedItem != null);
+            return correct;
         }
     }
 }

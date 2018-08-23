@@ -58,16 +58,34 @@ namespace CLMAutomation
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*Boolean close = askAboutSaving();
-            if (!close)
+            foreach (TabPage tab in tabControl1.TabPages)
+            {
+                UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
+                Boolean okToClose = userControlScenario.askAboutSaving();
+                if (okToClose)
+                {
+                    tabControl1.TabPages.Remove(tab);
+                }
+            }
+            //jeśli zostały jakieś niezamknięte zakładki, przełącz się na pierwszą z lewej i nie zamykaj okna
+            if (tabControl1.TabCount > 0)
             {
                 e.Cancel = true;
-            }*/
+                tabControl1.SelectTab(0);
+            }
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
-            
+            UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
+            if (userControlScenario.isCorrect())
+            {
+                userControlScenario.run();
+            }
+            else
+            {
+                MessageBox.Show("The following scenario has missing data and cannot be run: " + userControlScenario.ShortName, "Error");
+            }
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -228,6 +246,31 @@ namespace CLMAutomation
                 tabControl1.TabPages.Add(newTab);
                 tabControl1.SelectTab(0);
                 nextNewTabNumber = 2;
+            }
+        }
+
+        private void buttonRunAll_Click(object sender, EventArgs e)
+        {
+            String incorrectScenarios = "";
+            foreach (TabPage tab in tabControl1.TabPages)
+            {
+                UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
+                if (!userControlScenario.isCorrect())
+                {
+                    incorrectScenarios += userControlScenario.ShortName + "\n";
+                }
+            }
+            if (incorrectScenarios != "")
+            {
+                MessageBox.Show("The following scenarios have missing data and cannot be run: \n" + incorrectScenarios, "Error");
+            }
+            else
+            {
+                foreach (TabPage tab in tabControl1.TabPages)
+                {
+                    UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
+                    userControlScenario.run();
+                }
             }
         }
     }
