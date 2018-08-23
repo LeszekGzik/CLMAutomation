@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scenario name="Capex Purchasing">
+  <screenfolder>.\..\Screenshots\</screenfolder>
+  <xlsoutput>.\..\testresults.xls</xlsoutput>
+  <xlssheet>Test Results</xlssheet>
+  <maxrepetitions>1</maxrepetitions>
+  <waitforinput>300</waitforinput>
+  <reportinglevel>step</reportinglevel>
+  <logginglevel>debug</logginglevel>
+  <screenshootinglevel>error</screenshootinglevel>
+  <tests>
+    <test name="TC01" testcase=".\..\Test cases\Capex_TC01.xls" testdata=".\..\Test data\Capex Dane.xls" />
+    <test name="TC02" testcase=".\..\Test cases\Capex_TC02.xls" testdata=".\..\Test data\Capex Dane.xls" />
+    <test name="TC03" testcase=".\..\Test cases\Capex_TC03.xls" testdata=".\..\Test data\Capex Dane.xls" />
+  </tests>
+</scenario>
