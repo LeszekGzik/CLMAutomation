@@ -13,7 +13,6 @@ namespace CLMAutomation
 {
     public partial class SettingsForm : Form
     {
-        Boolean changed;
         String propertiesComment;
         public SettingsForm()
         {

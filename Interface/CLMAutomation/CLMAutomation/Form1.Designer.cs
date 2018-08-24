@@ -57,7 +57,7 @@
             // buttonMoveRight
             // 
             this.buttonMoveRight.Image = global::CLMAutomation.Properties.Resources.Next_16x;
-            this.buttonMoveRight.Location = new System.Drawing.Point(221, 12);
+            this.buttonMoveRight.Location = new System.Drawing.Point(214, 11);
             this.buttonMoveRight.Name = "buttonMoveRight";
             this.buttonMoveRight.Size = new System.Drawing.Size(24, 24);
             this.buttonMoveRight.TabIndex = 63;
@@ -68,7 +68,7 @@
             // buttonMoveLeft
             // 
             this.buttonMoveLeft.Image = global::CLMAutomation.Properties.Resources.Previous_16x;
-            this.buttonMoveLeft.Location = new System.Drawing.Point(191, 12);
+            this.buttonMoveLeft.Location = new System.Drawing.Point(184, 11);
             this.buttonMoveLeft.Name = "buttonMoveLeft";
             this.buttonMoveLeft.Size = new System.Drawing.Size(24, 24);
             this.buttonMoveLeft.TabIndex = 62;
@@ -79,7 +79,7 @@
             // buttonSettings
             // 
             this.buttonSettings.Image = global::CLMAutomation.Properties.Resources.Settings_16x;
-            this.buttonSettings.Location = new System.Drawing.Point(574, 12);
+            this.buttonSettings.Location = new System.Drawing.Point(574, 10);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Size = new System.Drawing.Size(24, 24);
             this.buttonSettings.TabIndex = 61;
@@ -90,7 +90,7 @@
             // buttonCloseAll
             // 
             this.buttonCloseAll.Image = global::CLMAutomation.Properties.Resources.CloseAll_16x;
-            this.buttonCloseAll.Location = new System.Drawing.Point(393, 11);
+            this.buttonCloseAll.Location = new System.Drawing.Point(386, 10);
             this.buttonCloseAll.Name = "buttonCloseAll";
             this.buttonCloseAll.Size = new System.Drawing.Size(24, 24);
             this.buttonCloseAll.TabIndex = 60;
@@ -101,7 +101,7 @@
             // buttonClose
             // 
             this.buttonClose.Image = global::CLMAutomation.Properties.Resources.Close_16x;
-            this.buttonClose.Location = new System.Drawing.Point(363, 11);
+            this.buttonClose.Location = new System.Drawing.Point(356, 10);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(24, 24);
             this.buttonClose.TabIndex = 59;
@@ -112,7 +112,7 @@
             // buttonRunAll
             // 
             this.buttonRunAll.Image = global::CLMAutomation.Properties.Resources.RunAll_16x1;
-            this.buttonRunAll.Location = new System.Drawing.Point(311, 11);
+            this.buttonRunAll.Location = new System.Drawing.Point(304, 10);
             this.buttonRunAll.Name = "buttonRunAll";
             this.buttonRunAll.Size = new System.Drawing.Size(24, 24);
             this.buttonRunAll.TabIndex = 58;
@@ -123,7 +123,7 @@
             // buttonSaveAll
             // 
             this.buttonSaveAll.Image = global::CLMAutomation.Properties.Resources.SaveAll_16x;
-            this.buttonSaveAll.Location = new System.Drawing.Point(137, 12);
+            this.buttonSaveAll.Location = new System.Drawing.Point(137, 11);
             this.buttonSaveAll.Name = "buttonSaveAll";
             this.buttonSaveAll.Size = new System.Drawing.Size(24, 24);
             this.buttonSaveAll.TabIndex = 57;
@@ -145,7 +145,7 @@
             // buttonRun
             // 
             this.buttonRun.Image = global::CLMAutomation.Properties.Resources.Run_16x;
-            this.buttonRun.Location = new System.Drawing.Point(281, 11);
+            this.buttonRun.Location = new System.Drawing.Point(274, 10);
             this.buttonRun.Name = "buttonRun";
             this.buttonRun.Size = new System.Drawing.Size(24, 24);
             this.buttonRun.TabIndex = 55;
@@ -156,7 +156,7 @@
             // buttonSaveAs
             // 
             this.buttonSaveAs.Image = global::CLMAutomation.Properties.Resources.SaveAs_16x;
-            this.buttonSaveAs.Location = new System.Drawing.Point(107, 12);
+            this.buttonSaveAs.Location = new System.Drawing.Point(107, 11);
             this.buttonSaveAs.Name = "buttonSaveAs";
             this.buttonSaveAs.Size = new System.Drawing.Size(24, 24);
             this.buttonSaveAs.TabIndex = 54;
@@ -167,7 +167,7 @@
             // buttonSave
             // 
             this.buttonSave.Image = global::CLMAutomation.Properties.Resources.Save_16x;
-            this.buttonSave.Location = new System.Drawing.Point(77, 12);
+            this.buttonSave.Location = new System.Drawing.Point(77, 11);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(24, 24);
             this.buttonSave.TabIndex = 53;

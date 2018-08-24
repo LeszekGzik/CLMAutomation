@@ -58,11 +58,11 @@ namespace CLMAutomation
 
         private void buttonSelectOutputFile_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
-            openFileDialog1.FileName = "";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            saveFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
+            saveFileDialog1.FileName = "";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBoxOutputFile.Text = openFileDialog1.FileName;
+                textBoxOutputFile.Text = saveFileDialog1.FileName;
                 if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
                 Changed = true;
             }
