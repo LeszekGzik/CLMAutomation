@@ -72,7 +72,7 @@ namespace CLMAutomation
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBoxScreenFolder.Text = folderBrowserDialog1.SelectedPath;
+                textBoxScreenFolder.Text = folderBrowserDialog1.SelectedPath + "\\";
                 if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
                 Changed = true;
             }

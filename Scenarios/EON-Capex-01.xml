@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <scenario name="Capex Purchasing 01">
-  <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots</screenfolder>
+  <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots\</screenfolder>
   <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\testresults.xls</xlsoutput>
   <xlssheet>Test Results</xlssheet>
   <maxrepetitions>1</maxrepetitions>
