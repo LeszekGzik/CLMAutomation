@@ -19,7 +19,8 @@ namespace CLMAutomation
         public Form1()
         {
             InitializeComponent();
-            saveFileDialog1.Filter = "XML Files|*.xml";
+            saveFileDialog1.Filter = "eXtensible Markup Language File (*.xml)|*.xml";
+            openFileDialog1.Filter = "eXtensible Markup Language File (*.xml)|*.xml";
             UserControlScenario userControlScenario = new UserControlScenario("new 1");
             userControlScenario.ScenarioChanged += new EventHandler(ScenarioChangedEventHandler);
             tabControl1.TabPages[0].Controls.Add(userControlScenario);
@@ -78,13 +79,16 @@ namespace CLMAutomation
         private void buttonRun_Click(object sender, EventArgs e)
         {
             UserControlScenario userControlScenario = (UserControlScenario)tabControl1.SelectedTab.Controls["userControlScenario"];
-            if (userControlScenario.isCorrect())
+            if (userControlScenario.askAboutSaving())
             {
-                userControlScenario.run();
-            }
-            else
-            {
-                MessageBox.Show("The following scenario has missing data and cannot be run: " + userControlScenario.ShortName, "Error");
+                if (userControlScenario.isCorrect())
+                {
+                    userControlScenario.run();
+                }
+                else
+                {
+                    MessageBox.Show("The following scenario has missing data and cannot be run: " + userControlScenario.ShortName, "Error");
+                }
             }
         }
 
@@ -103,7 +107,6 @@ namespace CLMAutomation
       
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "XML Files|*.xml";
             openFileDialog1.FileName = "";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -255,9 +258,12 @@ namespace CLMAutomation
             foreach (TabPage tab in tabControl1.TabPages)
             {
                 UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
-                if (!userControlScenario.isCorrect())
+                if (userControlScenario.askAboutSaving())
                 {
-                    incorrectScenarios += userControlScenario.ShortName + "\n";
+                    if (!userControlScenario.isCorrect())
+                    {
+                        incorrectScenarios += userControlScenario.ShortName + "\n";
+                    }
                 }
             }
             if (incorrectScenarios != "")

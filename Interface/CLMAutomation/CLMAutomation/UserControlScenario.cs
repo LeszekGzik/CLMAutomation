@@ -45,7 +45,7 @@ namespace CLMAutomation
             int row = e.RowIndex;
             if ((column == 1) || (column == 2))
             {
-                openFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
+                openFileDialog1.Filter = "Microsoft Excel Spreadsheet (*.xls)|*.xls";
                 openFileDialog1.FileName = "";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -58,7 +58,7 @@ namespace CLMAutomation
 
         private void buttonSelectOutputFile_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Microsoft Excel Spreadsheets|*.xls";
+            saveFileDialog1.Filter = "Microsoft Excel Spreadsheet (*.xls)|*.xls";
             saveFileDialog1.FileName = "";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -167,6 +167,7 @@ namespace CLMAutomation
                 {
                     if (Unnamed)
                     {
+                        saveFileDialog1.Filter = "eXtensible Markup Language File (*.xml)|*.xml";
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             saveScenarioAs(saveFileDialog1.FileName);

@@ -11,7 +11,6 @@ C:\Users\A0631675\source\repos\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomati
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\bin\Debug\CLMAutomation.exe.config
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\bin\Debug\CLMAutomation.exe
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\bin\Debug\CLMAutomation.pdb
-C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.csprojAssemblyReference.cache
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.Form1.resources
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.Properties.Resources.resources
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.csproj.GenerateResource.cache
