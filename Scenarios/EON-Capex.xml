@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <scenario name="Capex Purchasing">
-  <screenfolder>.\..\Screenshots\</screenfolder>
-  <xlsoutput>.\..\testresults.xls</xlsoutput>
+  <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots\</screenfolder>
+  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\testresults.xls</xlsoutput>
   <xlssheet>Test Results</xlssheet>
   <maxrepetitions>1</maxrepetitions>
   <waitforinput>300</waitforinput>

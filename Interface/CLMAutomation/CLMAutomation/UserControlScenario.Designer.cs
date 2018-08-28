@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonSelectScreenFolder = new System.Windows.Forms.Button();
             this.labelScreenshootingLevel = new System.Windows.Forms.Label();
             this.comboBoxScreenshootingLevel = new System.Windows.Forms.ComboBox();
@@ -57,6 +58,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxRepetitions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -98,6 +100,7 @@
             this.comboBoxScreenshootingLevel.Name = "comboBoxScreenshootingLevel";
             this.comboBoxScreenshootingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxScreenshootingLevel.TabIndex = 45;
+            this.toolTip1.SetToolTip(this.comboBoxScreenshootingLevel, "How often screenshots are taken");
             this.comboBoxScreenshootingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelReportingLevel
@@ -126,6 +129,7 @@
             this.comboBoxReportingLevel.Name = "comboBoxReportingLevel";
             this.comboBoxReportingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxReportingLevel.TabIndex = 42;
+            this.toolTip1.SetToolTip(this.comboBoxReportingLevel, "How often reports are made");
             this.comboBoxReportingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelLoggingLevel
@@ -155,6 +159,7 @@
             this.comboBoxLoggingLevel.Name = "comboBoxLoggingLevel";
             this.comboBoxLoggingLevel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxLoggingLevel.TabIndex = 41;
+            this.toolTip1.SetToolTip(this.comboBoxLoggingLevel, "How often logs are saved");
             this.comboBoxLoggingLevel.SelectedIndexChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelDelay
@@ -182,6 +187,7 @@
             this.numericUpDownDelay.Name = "numericUpDownDelay";
             this.numericUpDownDelay.Size = new System.Drawing.Size(103, 20);
             this.numericUpDownDelay.TabIndex = 39;
+            this.toolTip1.SetToolTip(this.numericUpDownDelay, "Time to wait between actions, in miliseconds");
             this.numericUpDownDelay.ValueChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelMaxRepetitions
@@ -204,6 +210,7 @@
             this.numericUpDownMaxRepetitions.Name = "numericUpDownMaxRepetitions";
             this.numericUpDownMaxRepetitions.Size = new System.Drawing.Size(103, 20);
             this.numericUpDownMaxRepetitions.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.numericUpDownMaxRepetitions, "Number of action repetitions in case of error");
             this.numericUpDownMaxRepetitions.Value = new decimal(new int[] {
             1,
             0,
@@ -227,6 +234,7 @@
             this.textBoxReportTitle.Name = "textBoxReportTitle";
             this.textBoxReportTitle.Size = new System.Drawing.Size(140, 20);
             this.textBoxReportTitle.TabIndex = 35;
+            this.toolTip1.SetToolTip(this.textBoxReportTitle, "Title for the .xls report sheet");
             this.textBoxReportTitle.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // buttonSelectOutputFile
@@ -256,6 +264,7 @@
             this.textBoxOutputFile.Name = "textBoxOutputFile";
             this.textBoxOutputFile.Size = new System.Drawing.Size(462, 20);
             this.textBoxOutputFile.TabIndex = 32;
+            this.toolTip1.SetToolTip(this.textBoxOutputFile, ".xls report file location");
             this.textBoxOutputFile.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelScenarioName
@@ -273,6 +282,7 @@
             this.textBoxScreenFolder.Name = "textBoxScreenFolder";
             this.textBoxScreenFolder.Size = new System.Drawing.Size(462, 20);
             this.textBoxScreenFolder.TabIndex = 29;
+            this.toolTip1.SetToolTip(this.textBoxScreenFolder, "Screenshots taken during execution will be saved here");
             this.textBoxScreenFolder.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelScreenFolder
@@ -290,6 +300,7 @@
             this.textBoxScenarioName.Name = "textBoxScenarioName";
             this.textBoxScenarioName.Size = new System.Drawing.Size(462, 20);
             this.textBoxScenarioName.TabIndex = 28;
+            this.toolTip1.SetToolTip(this.textBoxScenarioName, "Name that will be displayed in logs and reports");
             this.textBoxScenarioName.TextChanged += new System.EventHandler(this.changesOccured);
             // 
             // labelCurrentScenario
@@ -410,5 +421,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

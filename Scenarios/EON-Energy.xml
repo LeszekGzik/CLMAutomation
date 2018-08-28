@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scenario name = "Energy Purchasing">
-	<screenfolder>.\..\Screenshots\</screenfolder>
-	<xlsoutput>.\..\testresults.xls</xlsoutput>
-	<xlssheet>Test Results</xlssheet>
-	<maxrepetitions>1</maxrepetitions>
-	<waitforinput>500</waitforinput>
-	<reportinglevel>step</reportinglevel>
-	<screenshootinglevel>error</screenshootinglevel>
-	<logginglevel>debug</logginglevel>
-	<tests>
-		<test name="TC01" testcase=".\..\Test cases\Energy_TC01.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC03" testcase=".\..\Test cases\Energy_TC03.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC04" testcase=".\..\Test cases\Energy_TC04.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC05A" testcase=".\..\Test cases\Energy_TC05A_Extension.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC05B" testcase=".\..\Test cases\Energy_TC05B_Pricing.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC05C" testcase=".\..\Test cases\Energy_TC05C_Other.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-		<test name="TC07B" testcase=".\..\Test cases\Energy_TC07B_Other.xls" testdata=".\..\Test data\Energy Dane.xls"></test>
-	</tests>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scenario name="Energy Purchasing">
+  <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots\</screenfolder>
+  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\testresults.xls</xlsoutput>
+  <xlssheet>Test Results</xlssheet>
+  <maxrepetitions>1</maxrepetitions>
+  <waitforinput>300</waitforinput>
+  <reportinglevel>step</reportinglevel>
+  <logginglevel>debug</logginglevel>
+  <screenshootinglevel>error</screenshootinglevel>
+  <tests>
+    <test name="TC01" testcase=".\..\Test cases\Energy_TC01.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC03" testcase=".\..\Test cases\Energy_TC03.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC04" testcase=".\..\Test cases\Energy_TC04.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC05A" testcase=".\..\Test cases\Energy_TC05A_Extension.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC05B" testcase=".\..\Test cases\Energy_TC05B_Pricing.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC05C" testcase=".\..\Test cases\Energy_TC05C_Other.xls" testdata=".\..\Test data\Energy Dane.xls" />
+    <test name="TC07B" testcase=".\..\Test cases\Energy_TC07B_Other.xls" testdata=".\..\Test data\Energy Dane.xls" />
+  </tests>
 </scenario>
