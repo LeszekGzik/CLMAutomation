@@ -238,7 +238,7 @@ namespace CLMAutomation
                 runJar.StartInfo.UseShellExecute = false;
                 runJar.StartInfo.FileName = "java";
                 runJar.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
-                runJar.StartInfo.Arguments = "-jar CLMautomation.jar " + textBoxFile.Text;
+                runJar.StartInfo.Arguments = "-jar CLMautomation.jar \"" + textBoxFile.Text + "\"";
                 runJar.Start();
                 watch = Stopwatch.StartNew();
             }
