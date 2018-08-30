@@ -1,7 +1,5 @@
 package inputs;
 
-import org.openqa.selenium.By;
-
 import excel.Config;
 import excel.PList;
 import logging.ReportManager;

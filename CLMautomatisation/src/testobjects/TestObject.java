@@ -230,6 +230,10 @@ public class TestObject {
 					input = new CurrentDateInput(c, this);
 					inputs.add(input);
 					break;
+				case "CMP":
+					input = new CompareTextInput(c, this);
+					inputs.add(input);
+					break;
 			}
 		}
 		getSteps();
