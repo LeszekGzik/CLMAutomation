@@ -1,5 +1,6 @@
 Screenshots/
 Logs/
-testresults.xls
 *.xlsx
 Reports/
+Scenarios/
+CLMautomatiosation/properties.xml
