@@ -67,6 +67,9 @@ public class ReportManager {
 		case "debug":
 			reportingLevel = 0;
 			if (makeNewReport) {
+				if(properties.getProperty("automode").toLowerCase()=="true") {
+					
+				}
 				String[][] contents = {{"Scenario", "Test", "Step", "Command", "Status", "Time stamp"}};
 				ExcelWriter.write(xlsFile, xlsSheet, contents);
 				makeNewReport = false;

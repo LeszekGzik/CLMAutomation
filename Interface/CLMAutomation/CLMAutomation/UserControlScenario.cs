@@ -132,6 +132,21 @@ namespace CLMAutomation
             otherNode.InnerText = comboBoxScreenshootingLevel.Text;
             scenarioNode.AppendChild(otherNode);
 
+            otherNode = doc.CreateElement("autofolder");
+            otherNode.InnerText = textBoxAutoFolder.Text;
+            scenarioNode.AppendChild(otherNode);
+
+            otherNode = doc.CreateElement("automode");
+            if (checkBoxAuto.Checked)
+            {
+                otherNode.InnerText = "true";
+            }
+            else
+            {
+                otherNode.InnerText = "false";
+            }
+            scenarioNode.AppendChild(otherNode);
+
             XmlElement testsNode = doc.CreateElement("tests");
             scenarioNode.AppendChild(testsNode);
 
@@ -217,6 +232,9 @@ namespace CLMAutomation
                 comboBoxLoggingLevel.Text = doc.SelectSingleNode("//scenario/logginglevel/text()").Value;
                 comboBoxReportingLevel.Text = doc.SelectSingleNode("//scenario/reportinglevel/text()").Value;
                 comboBoxScreenshootingLevel.Text = doc.SelectSingleNode("//scenario/screenshootinglevel/text()").Value;
+                textBoxAutoFolder.Text = doc.SelectSingleNode("//scenario/autofolder/text()").Value;
+                checkBoxAuto.Checked = (doc.SelectSingleNode("//scenario/automode/text()").Value == "true");
+
                 Changed = false;
                 Unnamed = false;
                 ShortName = fileName.Substring(fileName.LastIndexOf('\\') + 1);
@@ -260,6 +278,27 @@ namespace CLMAutomation
                 runExcel.Start();
             }*/
             MessageBox.Show("Scenario completed in " + elapsed + " seconds.", "Testing finished");
+        }
+
+        private void checkBoxAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            Boolean auto = checkBoxAuto.Checked;
+            textBoxAutoFolder.Enabled = auto;
+            buttonSelectAutoFolder.Enabled = auto;
+            textBoxOutputFile.Enabled = !auto;
+            buttonSelectOutputFile.Enabled = !auto;
+            if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
+            Changed = true;
+        }
+
+        private void buttonSelectAutoFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxAutoFolder.Text = folderBrowserDialog1.SelectedPath + "\\";
+                if (ScenarioChanged != null) ScenarioChanged(this, new EventArgs());
+                Changed = true;
+            }
         }
 
         public Boolean isCorrect()

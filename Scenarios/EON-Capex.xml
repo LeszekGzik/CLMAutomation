@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <scenario name="Capex Purchasing">
   <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots\</screenfolder>
-  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\testresults.xls</xlsoutput>
   <xlssheet>Test Results</xlssheet>
   <maxrepetitions>1</maxrepetitions>
   <waitforinput>300</waitforinput>
   <reportinglevel>step</reportinglevel>
   <logginglevel>debug</logginglevel>
   <screenshootinglevel>error</screenshootinglevel>
+  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\Reports\testresults.xls</xlsoutput>
+  <autofolder>C:\Users\A0631675\Desktop\CLMAutomation\Reports\</autofolder>
+  <automode>false</automode>
   <tests>
     <test name="TC01" testcase=".\..\Test cases\Capex_TC01.xls" testdata=".\..\Test data\Capex Dane.xls" />
     <test name="TC02" testcase=".\..\Test cases\Capex_TC02.xls" testdata=".\..\Test data\Capex Dane.xls" />

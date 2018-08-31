@@ -139,4 +139,8 @@ public class TestScenario {
 	public void setInputWait() {
 		Input.setInputWait(Integer.parseInt(properties.getProperty("waitforinput")));
 	}
+
+	public String getName() {
+		return name;
+	}
 }

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <scenario name="Energy Purchasing">
   <screenfolder>C:\Users\A0631675\Desktop\CLMAutomation\Screenshots\</screenfolder>
-  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\testresults.xls</xlsoutput>
+  <xlsoutput>C:\Users\A0631675\Desktop\CLMAutomation\Reports\testresults.xls</xlsoutput>
+  <autofolder>C:\Users\A0631675\Desktop\CLMAutomation\Reports\</autofolder>
+  <automode>false</automode>
   <xlssheet>Test Results</xlssheet>
   <maxrepetitions>1</maxrepetitions>
   <waitforinput>300</waitforinput>

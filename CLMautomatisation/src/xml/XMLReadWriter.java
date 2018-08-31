@@ -13,6 +13,7 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import logging.ReportManager;
 import testobjects.TestScenario;
 
 public class XMLReadWriter {
@@ -31,6 +32,8 @@ public class XMLReadWriter {
 		SingleTest test = null;
 		TList tests = null;
 		Iterator<Attribute> attributes;
+		Boolean auto = false;
+		String autofolder = "";
 		
         // First, create a new XMLInputFactory
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -108,6 +111,16 @@ public class XMLReadWriter {
                 	event = eventReader.nextEvent();
                 	scenario.setProperty("logginglevel", event.asCharacters().getData());
                 	break;
+                case "automode":
+                	event = eventReader.nextEvent();
+                	if (event.asCharacters().getData().equals("true")) {
+                		auto = true;
+                	}
+                	break;
+                case "autofolder":
+                	event = eventReader.nextEvent();
+                	autofolder = event.asCharacters().getData();
+                	break;
                 }
             }
 
@@ -120,6 +133,9 @@ public class XMLReadWriter {
                     scenario.addTests(tests);
                 }
             }
+        }
+        if (auto) {
+        	scenario.setProperty("xlsoutput", autofolder + scenario.getName() + " " + ReportManager.formattedDateTime() + ".xls");
         }
 		return scenario;
 	}

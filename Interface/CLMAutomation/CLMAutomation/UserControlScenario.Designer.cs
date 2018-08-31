@@ -59,6 +59,10 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBoxAuto = new System.Windows.Forms.CheckBox();
+            this.labelAutoFolder = new System.Windows.Forms.Label();
+            this.textBoxAutoFolder = new System.Windows.Forms.TextBox();
+            this.buttonSelectAutoFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxRepetitions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -66,7 +70,7 @@
             // 
             // buttonSelectScreenFolder
             // 
-            this.buttonSelectScreenFolder.Location = new System.Drawing.Point(482, 371);
+            this.buttonSelectScreenFolder.Location = new System.Drawing.Point(482, 328);
             this.buttonSelectScreenFolder.Name = "buttonSelectScreenFolder";
             this.buttonSelectScreenFolder.Size = new System.Drawing.Size(75, 23);
             this.buttonSelectScreenFolder.TabIndex = 47;
@@ -239,7 +243,7 @@
             // 
             // buttonSelectOutputFile
             // 
-            this.buttonSelectOutputFile.Location = new System.Drawing.Point(482, 421);
+            this.buttonSelectOutputFile.Location = new System.Drawing.Point(482, 378);
             this.buttonSelectOutputFile.Name = "buttonSelectOutputFile";
             this.buttonSelectOutputFile.Size = new System.Drawing.Size(75, 23);
             this.buttonSelectOutputFile.TabIndex = 34;
@@ -251,7 +255,7 @@
             // 
             this.labelReportFile.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.labelReportFile.AutoSize = true;
-            this.labelReportFile.Location = new System.Drawing.Point(11, 407);
+            this.labelReportFile.Location = new System.Drawing.Point(11, 364);
             this.labelReportFile.Name = "labelReportFile";
             this.labelReportFile.Size = new System.Drawing.Size(55, 13);
             this.labelReportFile.TabIndex = 33;
@@ -260,7 +264,7 @@
             // textBoxOutputFile
             // 
             this.textBoxOutputFile.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.textBoxOutputFile.Location = new System.Drawing.Point(14, 423);
+            this.textBoxOutputFile.Location = new System.Drawing.Point(14, 380);
             this.textBoxOutputFile.Name = "textBoxOutputFile";
             this.textBoxOutputFile.Size = new System.Drawing.Size(462, 20);
             this.textBoxOutputFile.TabIndex = 32;
@@ -270,7 +274,7 @@
             // labelScenarioName
             // 
             this.labelScenarioName.AutoSize = true;
-            this.labelScenarioName.Location = new System.Drawing.Point(11, 312);
+            this.labelScenarioName.Location = new System.Drawing.Point(11, 269);
             this.labelScenarioName.Name = "labelScenarioName";
             this.labelScenarioName.Size = new System.Drawing.Size(78, 13);
             this.labelScenarioName.TabIndex = 31;
@@ -278,7 +282,7 @@
             // 
             // textBoxScreenFolder
             // 
-            this.textBoxScreenFolder.Location = new System.Drawing.Point(14, 374);
+            this.textBoxScreenFolder.Location = new System.Drawing.Point(14, 331);
             this.textBoxScreenFolder.Name = "textBoxScreenFolder";
             this.textBoxScreenFolder.Size = new System.Drawing.Size(462, 20);
             this.textBoxScreenFolder.TabIndex = 29;
@@ -288,7 +292,7 @@
             // labelScreenFolder
             // 
             this.labelScreenFolder.AutoSize = true;
-            this.labelScreenFolder.Location = new System.Drawing.Point(11, 358);
+            this.labelScreenFolder.Location = new System.Drawing.Point(11, 315);
             this.labelScreenFolder.Name = "labelScreenFolder";
             this.labelScreenFolder.Size = new System.Drawing.Size(90, 13);
             this.labelScreenFolder.TabIndex = 30;
@@ -296,7 +300,7 @@
             // 
             // textBoxScenarioName
             // 
-            this.textBoxScenarioName.Location = new System.Drawing.Point(14, 326);
+            this.textBoxScenarioName.Location = new System.Drawing.Point(14, 283);
             this.textBoxScenarioName.Name = "textBoxScenarioName";
             this.textBoxScenarioName.Size = new System.Drawing.Size(462, 20);
             this.textBoxScenarioName.TabIndex = 28;
@@ -330,7 +334,7 @@
             this.columnTestData});
             this.dataGridView1.Location = new System.Drawing.Point(14, 55);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(543, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(543, 206);
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.changesOccured);
@@ -354,10 +358,53 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // checkBoxAuto
+            // 
+            this.checkBoxAuto.AutoSize = true;
+            this.checkBoxAuto.Location = new System.Drawing.Point(389, 468);
+            this.checkBoxAuto.Name = "checkBoxAuto";
+            this.checkBoxAuto.Size = new System.Drawing.Size(168, 17);
+            this.checkBoxAuto.TabIndex = 48;
+            this.checkBoxAuto.Text = "Auto-generate report file name";
+            this.toolTip1.SetToolTip(this.checkBoxAuto, "Automatically generate a unique report file for each execution of this scenario ");
+            this.checkBoxAuto.UseVisualStyleBackColor = true;
+            this.checkBoxAuto.CheckedChanged += new System.EventHandler(this.checkBoxAuto_CheckedChanged);
+            // 
+            // labelAutoFolder
+            // 
+            this.labelAutoFolder.AutoSize = true;
+            this.labelAutoFolder.Location = new System.Drawing.Point(11, 409);
+            this.labelAutoFolder.Name = "labelAutoFolder";
+            this.labelAutoFolder.Size = new System.Drawing.Size(206, 13);
+            this.labelAutoFolder.TabIndex = 30;
+            this.labelAutoFolder.Text = "Report folder (auto-generated reports only)";
+            // 
+            // textBoxAutoFolder
+            // 
+            this.textBoxAutoFolder.Enabled = false;
+            this.textBoxAutoFolder.Location = new System.Drawing.Point(14, 425);
+            this.textBoxAutoFolder.Name = "textBoxAutoFolder";
+            this.textBoxAutoFolder.Size = new System.Drawing.Size(462, 20);
+            this.textBoxAutoFolder.TabIndex = 29;
+            this.textBoxAutoFolder.TextChanged += new System.EventHandler(this.changesOccured);
+            // 
+            // buttonSelectAutoFolder
+            // 
+            this.buttonSelectAutoFolder.Enabled = false;
+            this.buttonSelectAutoFolder.Location = new System.Drawing.Point(482, 423);
+            this.buttonSelectAutoFolder.Name = "buttonSelectAutoFolder";
+            this.buttonSelectAutoFolder.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectAutoFolder.TabIndex = 47;
+            this.buttonSelectAutoFolder.Text = "Select folder";
+            this.buttonSelectAutoFolder.UseVisualStyleBackColor = true;
+            this.buttonSelectAutoFolder.Click += new System.EventHandler(this.buttonSelectAutoFolder_Click);
+            // 
             // UserControlScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxAuto);
+            this.Controls.Add(this.buttonSelectAutoFolder);
             this.Controls.Add(this.buttonSelectScreenFolder);
             this.Controls.Add(this.labelScreenshootingLevel);
             this.Controls.Add(this.comboBoxScreenshootingLevel);
@@ -375,7 +422,9 @@
             this.Controls.Add(this.labelReportFile);
             this.Controls.Add(this.textBoxOutputFile);
             this.Controls.Add(this.labelScenarioName);
+            this.Controls.Add(this.textBoxAutoFolder);
             this.Controls.Add(this.textBoxScreenFolder);
+            this.Controls.Add(this.labelAutoFolder);
             this.Controls.Add(this.labelScreenFolder);
             this.Controls.Add(this.textBoxScenarioName);
             this.Controls.Add(this.labelCurrentScenario);
@@ -422,5 +471,9 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox checkBoxAuto;
+        private System.Windows.Forms.Label labelAutoFolder;
+        private System.Windows.Forms.TextBox textBoxAutoFolder;
+        private System.Windows.Forms.Button buttonSelectAutoFolder;
     }
 }
