@@ -17,8 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import excel.Config;
 import excel.PList;
-import exceptions.TestFailedException;
-import exceptions.UntestedException;
+import exceptions.*;
 import inputs.*;
 import logging.ReportManager;
 
