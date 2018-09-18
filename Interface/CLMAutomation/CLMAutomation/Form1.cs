@@ -19,6 +19,7 @@ namespace CLMAutomation
         public Form1()
         {
             InitializeComponent();
+            KeyPreview = true;
             saveFileDialog1.Filter = "eXtensible Markup Language File (*.xml)|*.xml";
             openFileDialog1.Filter = "eXtensible Markup Language File (*.xml)|*.xml";
             UserControlScenario userControlScenario = new UserControlScenario("new 1");
@@ -276,6 +277,28 @@ namespace CLMAutomation
                 {
                     UserControlScenario userControlScenario = (UserControlScenario)tab.Controls["userControlScenario"];
                     userControlScenario.run();
+                }
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch(e.KeyCode)
+                {
+                    case Keys.N:
+                        buttonNew_Click(this, new EventArgs());
+                        break;
+                    case Keys.S:
+                        buttonSave_Click(this, new EventArgs());
+                        break;
+                    case Keys.O:
+                        buttonOpen_Click(this, new EventArgs());
+                        break;
+                    case Keys.R:
+                        buttonRun_Click(this, new EventArgs());
+                        break;
                 }
             }
         }

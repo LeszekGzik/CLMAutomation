@@ -226,6 +226,7 @@
             this.Name = "Form1";
             this.Text = "CLMAutomation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

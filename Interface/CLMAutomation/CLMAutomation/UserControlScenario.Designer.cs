@@ -52,9 +52,6 @@
             this.labelCurrentScenario = new System.Windows.Forms.Label();
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTestCase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTestData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -63,6 +60,9 @@
             this.labelAutoFolder = new System.Windows.Forms.Label();
             this.textBoxAutoFolder = new System.Windows.Forms.TextBox();
             this.buttonSelectAutoFolder = new System.Windows.Forms.Button();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnTestCase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnTestData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxRepetitions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -339,21 +339,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.changesOccured);
             // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "name";
-            this.columnName.Name = "columnName";
-            // 
-            // columnTestCase
-            // 
-            this.columnTestCase.HeaderText = "testcase";
-            this.columnTestCase.Name = "columnTestCase";
-            // 
-            // columnTestData
-            // 
-            this.columnTestData.HeaderText = "testdata";
-            this.columnTestData.Name = "columnTestData";
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -398,6 +383,21 @@
             this.buttonSelectAutoFolder.Text = "Select folder";
             this.buttonSelectAutoFolder.UseVisualStyleBackColor = true;
             this.buttonSelectAutoFolder.Click += new System.EventHandler(this.buttonSelectAutoFolder_Click);
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "name";
+            this.columnName.Name = "columnName";
+            // 
+            // columnTestCase
+            // 
+            this.columnTestCase.HeaderText = "testcase";
+            this.columnTestCase.Name = "columnTestCase";
+            // 
+            // columnTestData
+            // 
+            this.columnTestData.HeaderText = "testdata";
+            this.columnTestData.Name = "columnTestData";
             // 
             // UserControlScenario
             // 
@@ -464,9 +464,6 @@
         private System.Windows.Forms.Label labelCurrentScenario;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnTestCase;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnTestData;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
@@ -475,5 +472,8 @@
         private System.Windows.Forms.Label labelAutoFolder;
         private System.Windows.Forms.TextBox textBoxAutoFolder;
         private System.Windows.Forms.Button buttonSelectAutoFolder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnTestCase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnTestData;
     }
 }

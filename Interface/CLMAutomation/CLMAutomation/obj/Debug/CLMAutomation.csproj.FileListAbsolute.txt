@@ -19,4 +19,3 @@ C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\ob
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.pdb
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.UserControlScenario.resources
 C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.SettingsForm.resources
-C:\Users\A0631675\Desktop\CLMAutomation\Interface\CLMAutomation\CLMAutomation\obj\Debug\CLMAutomation.csprojAssemblyReference.cache
