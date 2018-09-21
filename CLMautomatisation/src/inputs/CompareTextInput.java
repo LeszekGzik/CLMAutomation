@@ -1,7 +1,6 @@
 package inputs;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 
 import excel.Config;
 import excel.PList;

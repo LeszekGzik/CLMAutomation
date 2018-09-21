@@ -7,21 +7,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="libs/client-combined-3.10.0.jar"/>
-	<classpathentry kind="lib" path="libs/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="libs/commons-exec-1.3.jar"/>
-	<classpathentry kind="lib" path="libs/commons-io-2.0.jar"/>
-	<classpathentry kind="lib" path="libs/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="libs/gson-2.8.2.jar"/>
-	<classpathentry kind="lib" path="libs/guava-23.6-jre.jar"/>
-	<classpathentry kind="lib" path="libs/httpclient-4.5.3.jar"/>
-	<classpathentry kind="lib" path="libs/httpcore-4.4.6.jar"/>
-	<classpathentry kind="lib" path="libs/log4j-api-2.11.0.jar"/>
-	<classpathentry kind="lib" path="libs/log4j-core-2.11.0.jar"/>
-	<classpathentry kind="lib" path="libs/okhttp-3.9.1.jar"/>
-	<classpathentry kind="lib" path="libs/okio-1.13.0.jar"/>
-	<classpathentry kind="lib" path="libs/poi-3.17.jar"/>
-	<classpathentry kind="lib" path="libs/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="libs/byte-buddy-1.7.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/byte-buddy-1.8.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/commons-io-2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/guava-25.0-jre.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/httpclient-4.5.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/httpcore-4.4.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/log4j-api-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/log4j-core-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/okhttp-3.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/okio-1.14.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/client-combined-3.14.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

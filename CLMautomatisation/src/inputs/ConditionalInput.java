@@ -4,7 +4,6 @@ import org.openqa.selenium.TimeoutException;
 
 import excel.Config;
 import excel.PList;
-import exceptions.TestFailedException;
 import testobjects.TestObject;
 
 /** Jeœli podano NAME, ustawi flagê continueStep na false, jeœli zadany parametr jest pusty w testdata.

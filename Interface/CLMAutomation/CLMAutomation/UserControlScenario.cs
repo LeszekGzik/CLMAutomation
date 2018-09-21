@@ -223,16 +223,26 @@ namespace CLMAutomation
                 dataGridView1.DataSource = ds.Tables[0];
                 textBoxFile.Text = fileName;
 
-                textBoxScenarioName.Text = doc.SelectSingleNode("//scenario").Attributes["name"].Value;
-                textBoxOutputFile.Text = doc.SelectSingleNode("//xlsoutput/text()").Value;
-                textBoxReportTitle.Text = doc.SelectSingleNode("//xlssheet/text()").Value;
-                textBoxScreenFolder.Text = doc.SelectSingleNode("//screenfolder/text()").Value;
-                numericUpDownMaxRepetitions.Value = Int32.Parse(doc.SelectSingleNode("//maxrepetitions/text()").Value);
-                numericUpDownDelay.Value = Int32.Parse(doc.SelectSingleNode("//waitforinput/text()").Value);
-                comboBoxLoggingLevel.Text = doc.SelectSingleNode("//scenario/logginglevel/text()").Value;
-                comboBoxReportingLevel.Text = doc.SelectSingleNode("//scenario/reportinglevel/text()").Value;
-                comboBoxScreenshootingLevel.Text = doc.SelectSingleNode("//scenario/screenshootinglevel/text()").Value;
-                textBoxAutoFolder.Text = doc.SelectSingleNode("//scenario/autofolder/text()").Value;
+                node = doc.SelectSingleNode("//scenario");
+                if (node != null) textBoxScenarioName.Text = node.Attributes["name"].Value;
+                node = doc.SelectSingleNode("//xlsoutput/text()");
+                if (node != null) textBoxOutputFile.Text = node.Value;
+                node = doc.SelectSingleNode("//xlssheet/text()");
+                if (node != null) textBoxReportTitle.Text = node.Value;
+                node = doc.SelectSingleNode("//screenfolder/text()");
+                if (node != null) textBoxScreenFolder.Text = node.Value;
+                node = doc.SelectSingleNode("//maxrepetitions/text()");
+                if (node != null) numericUpDownMaxRepetitions.Value = Int32.Parse(node.Value);
+                node = doc.SelectSingleNode("//waitforinput/text()");
+                if (node != null) numericUpDownDelay.Value = Int32.Parse(node.Value);
+                node = doc.SelectSingleNode("//scenario/logginglevel/text()");
+                if (node != null) comboBoxLoggingLevel.Text = node.Value;
+                node = doc.SelectSingleNode("//scenario/reportinglevel/text()");
+                if (node != null) comboBoxReportingLevel.Text = node.Value;
+                node = doc.SelectSingleNode("//scenario/screenshootinglevel/text()");
+                if (node != null) comboBoxScreenshootingLevel.Text = node.Value;
+                node = doc.SelectSingleNode("//scenario/autofolder/text()");
+                if (node != null) textBoxAutoFolder.Text = node.Value;
                 checkBoxAuto.Checked = (doc.SelectSingleNode("//scenario/automode/text()").Value == "true");
 
                 Changed = false;
@@ -307,7 +317,8 @@ namespace CLMAutomation
             correct &= (textBoxScenarioName.Text.Length > 0);
             correct &= (textBoxScreenFolder.Text.Length > 0);
             correct &= (textBoxReportTitle.Text.Length > 0);
-            correct &= (textBoxOutputFile.Text.Length > 0);
+            correct &= ((textBoxAutoFolder.Text.Length > 0) || !checkBoxAuto.Checked);
+            correct &= ((textBoxAutoFolder.Text.Length > 0) || checkBoxAuto.Checked);
             correct &= (comboBoxLoggingLevel.SelectedItem != null);
             correct &= (comboBoxReportingLevel.SelectedItem != null);
             correct &= (comboBoxScreenshootingLevel.SelectedItem != null);
