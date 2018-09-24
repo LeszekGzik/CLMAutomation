@@ -77,8 +77,12 @@ public class TestScenario {
 			} catch(TestFailedException tfe) {
 				report.test(name, tests.getNameOf(index), "FAILED", ReportManager.currentDateTime());
 				failedTests++;
-				report.error(tfe.getTestInfo() + " - " + tfe.getStepInfo() + "(" + ReportManager.formattedDateTime() + ")", tfe.getMessage());
-				testObject.close();
+				try {
+					report.error(tfe.getTestInfo() + " - " + tfe.getStepInfo() + "(" + ReportManager.formattedDateTime() + ")", tfe.getMessage());
+					testObject.close();
+				} catch(Exception e) {
+					System.out.println("Couldn't report the error properly - the browser window has been closed.");
+				}
 			} catch(UntestedException ue) {
 				report.test(name, tests.getNameOf(index), "UNTESTED", ReportManager.currentDateTime());
 				untestedTests++;

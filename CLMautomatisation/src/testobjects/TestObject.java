@@ -8,6 +8,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -253,9 +254,8 @@ public class TestObject {
 
 	/** Zamyka okno przegl¹darki po zakoñczeniu testu */
 	public void close() {
-		if(driver.getWindowHandles()!=null)	{
+		if(driver!=null) {
 			driver.quit();
 		}
 	}
-
 }

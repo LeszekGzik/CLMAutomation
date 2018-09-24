@@ -276,17 +276,6 @@ namespace CLMAutomation
         {
             watch.Stop();
             double elapsed = (double)watch.ElapsedMilliseconds / 1000;
-            /*if (checkBoxOpenMessage.Checked)
-            {
-                MessageBox.Show("Scenario completed in " + elapsed + " seconds.", "Testing finished");
-            }
-            if (checkBoxOpenExcel.Checked)
-            {
-                Process runExcel = new Process();
-                runExcel.StartInfo.WorkingDirectory = Application.StartupPath + "\\..\\..\\..\\..\\..\\CLMautomatisation";
-                runExcel.StartInfo.FileName = textBoxOutputFile.Text;
-                runExcel.Start();
-            }*/
             MessageBox.Show("Scenario completed in " + elapsed + " seconds.", "Testing finished");
         }
 
