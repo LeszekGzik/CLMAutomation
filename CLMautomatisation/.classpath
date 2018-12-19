@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/poi-3.17.jar"/>
 	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/A0631675/Desktop/CLMAutomation/CLMautomatisation/libs/client-combined-3.14.0.jar"/>
+	<classpathentry kind="lib" path="libs/jacob.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

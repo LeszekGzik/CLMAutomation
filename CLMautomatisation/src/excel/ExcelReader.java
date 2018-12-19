@@ -94,7 +94,7 @@ public class ExcelReader {
 			}
 			
 			String cell1, cell2, cell3, cell4;
-			for (int i = 1; i < rows; i++) {
+			for (int i = 0; i < rows; i++) {
 				if (nonEmptyRows[i]) {
 					cell1 = formatter.formatCellValue(sheet.getRow(i).getCell(0));
 					cell2 = formatter.formatCellValue(sheet.getRow(i).getCell(1));

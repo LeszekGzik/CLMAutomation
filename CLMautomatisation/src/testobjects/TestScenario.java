@@ -33,7 +33,6 @@ public class TestScenario {
 	public TestScenario(String name, TList tests, Properties properties) {
 		this.tests = tests;
 		this.properties = properties;
-		//this.name = name.substring(0, name.lastIndexOf('.'));
 		this.name = name;
 		testdata = new ArrayList<PTable>();
 		configs = new ArrayList<List<Config>>();
@@ -68,8 +67,21 @@ public class TestScenario {
 		TestObject testObject = null;
 		for (int i=0; i<testdata.get(index).getSize(); i++) {
 			try {
-				testObject = new TestObject(tests.getNameOf(index), name, configs.get(index), testdata.get(index).get(i), properties);
-				report = new ReportManager(testObject.driver, properties);
+				
+				//okreœlanie typu testu (WEB/SAP)
+				switch(configs.get(index).get(0).getType()) {
+				case "SAP":
+					testObject = new SAPTest(tests.getNameOf(index), name, configs.get(index), testdata.get(index).get(i), properties);
+					report = new ReportManager(properties);
+					break;
+				case "WEB":
+					testObject = new WebTest(tests.getNameOf(index), name, configs.get(index), testdata.get(index).get(i), properties);
+					report = new ReportManager(((WebTest)testObject).driver, properties);
+					break;
+				default:
+					throw new TestScriptFormatException(tests.getNameOf(index), name);
+				}
+				
 				testObject.performAllSteps();
 				report.test(name, tests.getNameOf(index), "OK", ReportManager.currentDateTime());
 				okTests++;
@@ -87,6 +99,8 @@ public class TestScenario {
 				report.test(name, tests.getNameOf(index), "UNTESTED", ReportManager.currentDateTime());
 				untestedTests++;
 				testObject.close();
+			} catch (TestScriptFormatException e) {
+				System.out.println(e.getMessage());
 			}
 		}
 	}

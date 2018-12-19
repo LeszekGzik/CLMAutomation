@@ -135,6 +135,86 @@ public class ReportManager {
 		}
 	}
 	
+	public ReportManager(Properties properties) {
+		logger = LogManager.getLogger(ReportManager.class);
+		xlsFile = properties.getProperty("xlsoutput");
+		xlsSheet = properties.getProperty("xlssheet");
+		
+		switch(properties.getProperty("logginglevel").toLowerCase()) {
+		case "debug":
+			loggingLevel = 0;
+			break;
+		case "step":
+			loggingLevel = 1;
+			break;
+		case "test":
+			loggingLevel = 2;
+			break;
+		case "scenario":
+			loggingLevel = 3;
+			break;
+		case "error":
+			loggingLevel = 4;
+			break;
+		case "scr":
+			loggingLevel = 5;
+			break;
+		case "never":
+			loggingLevel = 6;
+			break;
+		}
+		
+		switch(properties.getProperty("reportinglevel").toLowerCase()) {
+		case "debug":
+			reportingLevel = 0;
+			if (makeNewReport) {
+				if(properties.getProperty("automode").toLowerCase()=="true") {
+					
+				}
+				String[][] contents = {{"Scenario", "Test", "Step", "Command", "Status", "Time stamp"}};
+				ExcelWriter.write(xlsFile, xlsSheet, contents);
+				makeNewReport = false;
+			}
+			break;
+		case "step":
+			reportingLevel = 1;
+			if (makeNewReport) {
+				String[][] contents = {{"Scenario", "Test", "Step", "Status", "Time stamp"}};
+				ExcelWriter.write(xlsFile, xlsSheet, contents);
+				makeNewReport = false;
+			}
+			break;
+		case "test":
+			reportingLevel = 2;
+			if (makeNewReport) {
+				String[][] contents = {{"Scenario", "Test", "Status", "Time stamp"}};
+				ExcelWriter.write(xlsFile, xlsSheet, contents);
+				makeNewReport = false;
+			}
+			break;
+		case "scenario":
+			reportingLevel = 3;
+			if (makeNewReport) {
+				String[][] contents = {{"Scenario", "Status", "Time stamp"}};
+				ExcelWriter.write(xlsFile, xlsSheet, contents);
+				makeNewReport = false;
+			}
+			break;
+		case "error":
+			reportingLevel = 4;
+			break;
+		case "scr":
+			reportingLevel = 5;
+			break;
+		case "never":
+			reportingLevel = 6;
+			break;
+		}
+		
+		//TODO: Jakaœ normalna obs³uga screenshotów (póki co jest NEVER)
+		screenshootingLevel = 6;
+	}
+	
 	public void debug(String... args) throws IOException {
 		if (loggingLevel<=0) {
 			String message = "DEBUG";
