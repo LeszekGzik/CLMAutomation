@@ -110,43 +110,4 @@ public class ExcelReader {
 		}
 		return list;
 	}
-
-	/** Czyta listê testów (TList) z pierwszych dwóch kolumn pliku .xls (zak³adaj¹c, ¿e pierwsza kolumna to nazwy testów, a druga to dane testowe) 
-	public static TList readVertical(String filePath) {
-		TList tList = new TList();
-		HSSFWorkbook workbook;
-		try {
-			FileInputStream inputStream = new FileInputStream(new File(filePath));
-			workbook = new HSSFWorkbook(inputStream);
-			HSSFSheet sheet = workbook.getSheetAt(0);
-			DataFormatter formatter = new DataFormatter();
-			int rows = sheet.getPhysicalNumberOfRows();
-			
-			//sprawdzanie które wiersze s¹ nie-puste
-			Boolean [] nonEmptyRows = new Boolean[rows];
-			for (int i=0; i<rows; i++) {
-				nonEmptyRows[i] = false;
-				for(int j=0; j<sheet.getRow(i).getPhysicalNumberOfCells(); j++) {
-					if ((sheet.getRow(i)!=null)&&(sheet.getRow(i).getCell(j)!=null) && (!sheet.getRow(i).getCell(j).getStringCellValue().equals(""))) {
-						nonEmptyRows[i] = true;
-						break;
-					}
-				}
-			}
-			
-			String cell1, cell2;
-			for (int i = 1; i < rows; i++) {
-				if (nonEmptyRows[i]) {
-					cell1 = formatter.formatCellValue(sheet.getRow(i).getCell(0));
-					cell2 = formatter.formatCellValue(sheet.getRow(i).getCell(1));
-					tList.add(cell1, cell2);
-				}
-			}
-			workbook.close();
-			inputStream.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return tList;
-	}*/
 }

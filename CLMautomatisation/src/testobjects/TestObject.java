@@ -48,7 +48,8 @@ public class TestObject {
 	
 	/** Wykonuje wszystkie polecenia w kroku STEP
 	 * @return true jeœli krok wykona³ siê w ca³oœci 
-	 * @throws Exception */
+	 * @throws TestFailedException kiedy test siê nie powiedzie 
+	 * @throws IOException kiedy okno zosta³o zamkniête i nie mo¿na zaraportowaæ b³êdu */
 	public boolean performStep(String step) throws TestFailedException, IOException {
 		TestFailedException temp = null;
 		for (Input input : inputs) {

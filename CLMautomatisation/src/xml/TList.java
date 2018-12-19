@@ -2,7 +2,7 @@ package xml;
 
 import java.util.ArrayList;
 
-/** Lista test case'ów wczytywana z pliku ze scenariuszem.
+/** Lista przypadków testowych wczytywana z pliku ze scenariuszem.
  * W przeciwieñstwie do PList, nazwy testów (kluczy) MOG¥ siê powtarzaæ.
  * Lista jest indeksowana wedle kolejnoœci dodawania elementów.
  * */

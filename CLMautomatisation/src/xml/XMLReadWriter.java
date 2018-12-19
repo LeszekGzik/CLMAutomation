@@ -64,7 +64,7 @@ public class XMLReadWriter {
                 	break;
                 case "test":
                 	test = new SingleTest();
-                    // We read the attributes from this tag and add the name attribute to our object
+                    //Odczyt atrybutów
                     attributes = startElement.getAttributes();
                     while (attributes.hasNext()) {
                         Attribute attribute = attributes.next();

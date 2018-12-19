@@ -19,7 +19,7 @@ public class ReportManager {
 	public Logger logger;
 	public String xlsFile;
 	public String xlsSheet;
-	/** Poziom raportowania. Okreœla kiedy powinny byæ wykonywane zrzuty ekranu/logi/wpisy do raportu.
+	/** Poziomy raportowania. Okreœla kiedy powinny byæ wykonywane zrzuty ekranu/logi/wpisy do raportu.
 	 * 0 - DEBUG; wpisy wykonywane po ka¿dym poleceniu.
 	 * 1 - STEP; wpisy wykonywane po ka¿dym kroku (jeœli nie zosta³ pominiêty) oraz przy wyst¹pieniu b³êdu.
 	 * 2 - TEST; wpisy wykonywane na koniec testu oraz przy wyst¹pieniu b³êdu.
