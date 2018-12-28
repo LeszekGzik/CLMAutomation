@@ -6,17 +6,17 @@ import excel.Config;
 import excel.PList;
 import testobjects.SAPTest;
 
-/** Zatwierdza wpisane w SAP-ie wartoœci wciskaj¹c klawisz "Enter". ¯adnych parametrów. */
-public class SAPEnterInput extends SAPInput {
+/** Kilka w przycisk (lub inny element) pod wskazanym Xpath. Wymaga tylko Xpath. */
+public class SAPButtonInput extends SAPInput {
 
-	public SAPEnterInput(Config config, SAPTest parent) {
+	public SAPButtonInput(Config config, SAPTest parent) {
 		super(config, parent);
 	}
-	
+
 	public void fill(PList testdata) throws Exception {
 		super.fill(testdata);
 		
 		object = new ActiveXComponent(Session.invoke("findById", xpath).toDispatch());
-		object.invoke("sendVKey", 0);
+		object.invoke("press");
 	}
 }

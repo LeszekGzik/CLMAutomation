@@ -7,6 +7,7 @@ import excel.PList;
 import inputs.Input;
 import testobjects.*;
 
+/** Klasa przechowuj¹ca informacje na temat pojedynczej instrukcji w testach webowych. */
 public abstract class SAPInput extends Input {
 	public SAPTest parent;
 	public ActiveXComponent object, Session;
@@ -17,7 +18,6 @@ public abstract class SAPInput extends Input {
 		Session = parent.Session;
 	}
 
-	/** Blok testuj¹cy widocznoœæ, klikowalnoœæ i obecnoœæ elementu. Wywo³ywaæ tylko dla Inputów posiadaj¹cych Xpath =/= null */
 	public void fill(PList testdata) throws Exception {
 		Thread.sleep(Input.waitForInput);
 	}

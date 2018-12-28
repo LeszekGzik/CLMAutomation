@@ -12,6 +12,7 @@ import inputs.Input;
 
 import testobjects.*;
 
+/** Klasa przechowuj¹ca informacje na temat pojedynczej instrukcji w testach webowych. */
 public abstract class WebInput extends Input {
 	public WebDriver driver;
 	public WebTest parent;

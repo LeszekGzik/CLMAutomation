@@ -1,10 +1,6 @@
 package testobjects;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Proxy;
@@ -17,29 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import excel.Config;
 import excel.PList;
 import inputs.Input;
-import inputs.web.AlertInput;
-import inputs.web.BackToWindowInput;
-import inputs.web.ButtonInput;
-import inputs.web.CompareTextInput;
-import inputs.web.ConditionalInput;
-import inputs.web.ConditionalTestInput;
-import inputs.web.CurrentDateInput;
-import inputs.web.ElementExistsInput;
-import inputs.web.ElementNotExistsInput;
-import inputs.web.GetTextInput;
-import inputs.web.GoToInput;
-import inputs.web.MoveToInput;
-import inputs.web.NewWindowInput;
-import inputs.web.PickerInput;
-import inputs.web.PickerLevel2Input;
-import inputs.web.RadioInput;
-import inputs.web.ScreenshotInput;
-import inputs.web.SelectInput;
-import inputs.web.TextInput;
-import inputs.web.UploadFileInput;
-import inputs.web.WaitInput;
+import inputs.web.*;
 import logging.ReportManager;
 
+
+/** Klasa realizuj¹ca pojedynczy test webowy. Zawiera tylko komendy typu WebInput. */
 public class WebTest extends TestObject {
 
 	public WebDriver driver;

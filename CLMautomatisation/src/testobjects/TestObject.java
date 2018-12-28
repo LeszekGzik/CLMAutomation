@@ -1,21 +1,7 @@
 package testobjects;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.Proxy;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.*;
 import excel.Config;
 import excel.PList;
 import exceptions.*;
@@ -123,6 +109,7 @@ public class TestObject {
 		globaldata = new PList();
 	}
 	
+	/**	Zamyka sesjê w której odbywa siê test. Powinno byæ wywo³ywane zawsze na zakoñczenie testu w klasach potomnych. */
 	public void close() {
 		
 	}

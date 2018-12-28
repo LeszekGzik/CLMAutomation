@@ -14,6 +14,8 @@ import inputs.Input;
 import inputs.sap.*;
 import logging.ReportManager;
 
+
+/** Klasa realizuj¹ca pojedynczy test SAP-owy. Zawiera tylko komendy typu SapInput. */
 public class SAPTest extends TestObject {
 	public ActiveXComponent SAPROTWr, GUIApp, Connection, Session, Obj;
     public Dispatch ROTEntry;
@@ -36,6 +38,14 @@ public class SAPTest extends TestObject {
 			switch(c.getType()) {
 				case "T":
 					input = new SAPTextInput(c, this);
+					inputs.add(input);
+					break;
+				case "B":
+					input = new SAPButtonInput(c, this);
+					inputs.add(input);
+					break;
+				case "CELL":
+					input = new SAPModifyCellInput(c, this);
 					inputs.add(input);
 					break;
 				case "ENTER":

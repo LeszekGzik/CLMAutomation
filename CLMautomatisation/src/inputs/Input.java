@@ -2,7 +2,7 @@ package inputs;
 
 import excel.*;
 
-/** G³ówna klasa przechowuj¹ca informacjê o pojedynczej instrukcji (np. Button, GoTo itp.) */
+/** Abstrakcyjna klasa przechowuj¹ca informacjê o pojedynczej instrukcji (np. Button, GoTo itp.) */
 public abstract class Input {
 	public String name;
 	public String xpath;

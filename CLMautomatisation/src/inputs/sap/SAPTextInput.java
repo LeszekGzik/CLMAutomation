@@ -7,6 +7,7 @@ import testobjects.SAPTest;
 import testobjects.TestObject;
 import excel.PList;
 
+/** Wpisuje do okna tekstowego zadany tekst. Wymaga Xpath i Name. */
 public class SAPTextInput extends SAPInput {
 
 	public SAPTextInput(Config config, SAPTest parent) {
