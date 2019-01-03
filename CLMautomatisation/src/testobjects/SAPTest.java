@@ -52,6 +52,10 @@ public class SAPTest extends TestObject {
 					input = new SAPEnterInput(c, this);
 					inputs.add(input);
 					break;
+				case "DC":
+					input = new SAPDoubleClickInput(c, this);
+					inputs.add(input);
+					break;
 			}
 		}
 		getSteps();
